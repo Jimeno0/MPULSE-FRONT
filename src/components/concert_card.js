@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Dimmer, Image,Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-  class ConcertCard extends Component {
+export default  class ConcertCard extends Component {
     constructor(props){
       super(props);
       this.state = {active: false};
@@ -45,5 +45,3 @@ import { connect } from 'react-redux';
       )
     }
   }
-
-export default ConcertCard;

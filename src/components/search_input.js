@@ -22,14 +22,17 @@ class SearchInput extends Component {
   }
   render(){
     return(
-      <form onSubmit={this.handlerSubmit.bind(this)}>
-        <Input fluid icon='search'
-          type='text' placeholder='Search artist...'
-          value={this.state.term}
-          onChange={(event)=>{this.setState({term: event.target.value})}}
-        />
+      <div style={{height:'300px'}}>
+        <form onSubmit={this.handlerSubmit.bind(this)}>
+          <Input fluid icon='search'
+            type='text' placeholder='Search artist...'
+            value={this.state.term}
+            onChange={(event)=>{this.setState({term: event.target.value})}}
+          />
 
-      </form>
+        </form>
+      </div>
+
     )
   }
 }
