@@ -5,7 +5,7 @@ import { fetchConcerts } from '../actions/index';
 
 import { Input } from 'semantic-ui-react';
 
-class SearchBar extends Component {
+class SearchInput extends Component {
   constructor(props){
     super(props);
 
@@ -13,7 +13,6 @@ class SearchBar extends Component {
       term: ''
     }
   }
-
   handlerSubmit(event){
     event.preventDefault();
 
@@ -39,4 +38,4 @@ function mapToDispatch(dispatch) {
   return bindActionCreators({fetchConcerts},dispatch);
 }
 
-export default connect(null,mapToDispatch)(SearchBar);
+export default connect(null,mapToDispatch)(SearchInput);

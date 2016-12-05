@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ConcertCard from './concert_card';
+import { Grid } from 'semantic-ui-react'
+
 
 class SearchResultList extends Component {
   renderList(){
-    if (!this.props.searchConcerts[0]) {
+    if (this.props.searchConcerts.length === 0) {
       return <li>No cocerts for this artist yet...</li>
     }
-    return this.props.searchConcerts.map((concert) =>{
-      return <li key={concert.concert_id}>{concert.name}</li>
-    })
+    else {
+      return this.props.searchConcerts.map((concert) =>{
+        return (<Grid.Column key={concert.concert_id}>
+          <ConcertCard  concert={concert}/>
+        </Grid.Column>)
+      })
+    }
   }
   render(){
     return(
-      <div>
-        <ul>
-          {this.renderList()}
-        </ul>
-      </div>
+        <Grid >
+          <Grid.Row columns={3} centered={true}>
+            {this.renderList()}
+          </Grid.Row>
+        </Grid>
 
     )
   }
