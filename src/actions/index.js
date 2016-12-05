@@ -1,16 +1,13 @@
 import axios from 'axios';
-
-const API_KEY = 'VIxfWLncF71QZ3aoc9OLoeGU9NnAsVRj';
-const API_URL = 'https://app.ticketmaster.com/discovery/v2/events.json?';
-export const FETCH_CONCERTS = 'FETCH_CONCERTS';
-
+const API_URL = 'http://localhost:3000/'
+export const SEARCH_CONCERTS = 'SEARCH_CONCERTS';
 
 export function fetchConcerts(term){
-  const url = `${API_URL}apikey=${API_KEY}&keyword=${term}`
+  console.log('term', term);
+  const url = `${API_URL}concerts/search/${term}`
   const request = axios.get(url);
-
   return {
-    type: FETCH_CONCERTS,
+    type: SEARCH_CONCERTS,
     payload: request
   }
 }
