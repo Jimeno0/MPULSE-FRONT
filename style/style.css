@@ -1,19 +1,57 @@
+@font-face {
+    font-family: brownRegular;
+    src: url(./typo_brown/Brown-Regular.otf);
+}
+body{
+  font-family: brownRegular;
+}
+
 .card {
-  margin: 10px;
+  margin: 20px 15px;
   width: 30%;
   display: inline-block;
+  line-height: 1.2;
 }
 .card-body {
     padding: 2px 16px;
 }
-
 .card-button {
   width: 100%;
   border-radius: 0px;
   border: none;
   border-bottom: 2px solid;
+  font-size: 1em;
+  font-weight: normal;
+  height: 2.2em;
+  margin-top: 10px;
+}
+.card-date{
+  width: 25%;
+  display: inline-block;
+}
+.card-content{
+  width: 75%;
+  display: inline-block;
+  vertical-align: top;
+}
+.card-date p:first-child{
+  letter-spacing: 1px;
+  font-size: 1.65em;
+  font-weight: bold;
+}
+.card-date p:last-child{
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+}
+.card-content p:first-child{
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
+.card-content span{
+  font-size: 0.85em;
+    opacity: 0.7;
+}
 p{
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }

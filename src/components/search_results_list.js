@@ -5,7 +5,7 @@ import ConcertCard from './concert_card';
 class SearchResultList extends Component {
   renderList(){
     if (this.props.searchConcerts.length === 0) {
-      return <span>No cocerts for this artist yet...</span>
+      return <span>No concerts for this artist yet...</span>
     }
     else {
       return this.props.searchConcerts.map((concert) =>{
