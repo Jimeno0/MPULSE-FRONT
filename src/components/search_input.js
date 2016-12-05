@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchConcerts } from '../actions/index';
 
+import { Input } from 'semantic-ui-react';
 
 class SearchBar extends Component {
   constructor(props){
@@ -23,11 +24,12 @@ class SearchBar extends Component {
   render(){
     return(
       <form onSubmit={this.handlerSubmit.bind(this)}>
-        <input type="text" placeholder="Search an artist..."
+        <Input fluid icon='search'
+          type='text' placeholder='Search artist...'
           value={this.state.term}
           onChange={(event)=>{this.setState({term: event.target.value})}}
         />
-        <button type="submit">Search</button>
+
       </form>
     )
   }
