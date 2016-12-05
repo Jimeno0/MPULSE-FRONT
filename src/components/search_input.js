@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchConcerts } from '../actions/index';
 
-import { Input } from 'semantic-ui-react';
-
 class SearchInput extends Component {
   constructor(props){
     super(props);
@@ -22,14 +20,13 @@ class SearchInput extends Component {
   }
   render(){
     return(
-      <div style={{height:'300px'}}>
+      <div>
         <form onSubmit={this.handlerSubmit.bind(this)}>
-          <Input fluid icon='search'
+          <input
             type='text' placeholder='Search artist...'
             value={this.state.term}
             onChange={(event)=>{this.setState({term: event.target.value})}}
           />
-
         </form>
       </div>
 
