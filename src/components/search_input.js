@@ -20,7 +20,7 @@ class SearchInput extends Component {
   }
   render(){
     return(
-      <div>
+      <div className="search-bar">
         <form onSubmit={this.handlerSubmit.bind(this)}>
           <input
             type='text' placeholder='Search artist...'
