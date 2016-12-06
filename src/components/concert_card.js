@@ -18,14 +18,17 @@ export default class ConcertCard extends Component {
       }
       return (
         <div className="card">
-          <img className="card-image" src={concert.image} alt={concert.name}  />
+          <div className="card-img-container">
+            <img className="card-image" src={concert.image} alt={concert.name}  />
+            <img className="card-like" alt="like" src="../../assets/icons/heart.svg"></img>
+          </div>
           <div className="card-body">
             <div className="card-date">
               <p>{day}</p>
               <p>{month}</p>
             </div>
             <div className="card-content">
-              <p>{concert.name.toUpperCase()}</p>
+              <p>{concert.name.toUpperCase().substring(0,20)}</p>
 
               <span>{concert.venue}, {concert.city}, {concert.country}</span>
             </div>
