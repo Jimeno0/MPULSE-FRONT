@@ -18,7 +18,7 @@ export default class ConcertCard extends Component {
       }
       return (
         <div className="card">
-          <img src={concert.image} alt={concert.name} style={{width:'100%'}} />
+          <img className="card-image" src={concert.image} alt={concert.name}  />
           <div className="card-body">
             <div className="card-date">
               <p>{day}</p>

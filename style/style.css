@@ -52,6 +52,11 @@ body{
   font-size: 0.85em;
     opacity: 0.7;
 }
+.card-image{
+  opacity: 0.98;
+  filter: contrast(90%);
+  width:100%;
+}
 p{
   margin-bottom: 0;
 }
