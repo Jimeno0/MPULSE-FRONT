@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { loginUser } from '../actions/index';
 
-class Modal extends Component{
+
+class LoginForm extends Component{
   onSubmit(props){
     this.props.loginUser(props);
-    console.log('yippi hay yai!');
     this.closeModal();
   }
   closeModal(){
@@ -18,12 +18,11 @@ class Modal extends Component{
     const password = this.props.fields.password;
 
     return(
-      <div className="modal">
+      <div id="myModal" className="modal">
         <div className="modal-content">
           <button style={{float:'right', border:'none'}} onClick={this.closeModal}>x</button>
           <div style={{clear:'both'}}></div>
           <div className="container">
-
             <div className="row">
               <div className="one-half column">
                 <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -39,20 +38,8 @@ class Modal extends Component{
                   <button className="u-full-width" type="submit">Log in</button>
                 </form>
               </div>
-              <div className="one-half column">
-                {/* <form onSubmit={this.handlerLogin.bind(this)}>
-                  <p>Sign up</p>
-                  <input className="u-full-width" type="text" placeholder="User name"/>
-                  <input className="u-full-width" type="email" placeholder="email"/>
-                  <input className="u-full-width" type="password" placeholder="password"/>
-                  <button className="u-full-width" type="submit">Register</button>
-                </form> */}
-              </div>
-
-
             </div>
           </div>
-
         </div>
       </div>
     )
@@ -75,4 +62,4 @@ export default reduxForm({
   form: 'LoginForm',
   fields:['email','password'],
   validate
-},null, { loginUser })(Modal);
+},null, { loginUser })(LoginForm);
