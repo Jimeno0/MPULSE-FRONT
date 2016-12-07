@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from './login_form';
+import RegisterForm from './register_form';
 
 class Modal extends Component{
   onSubmit(props){
@@ -10,7 +11,6 @@ class Modal extends Component{
   closeModal(){
     document.getElementsByClassName("modal")[0].style.setProperty('display','none');
   }
-
   render(){
     return(
       <div className="modal">
@@ -23,7 +23,7 @@ class Modal extends Component{
                 <LoginForm />
               </div>
               <div className="one-half column">
-                <span>Sign up</span>
+                <RegisterForm />
               </div>
             </div>
           </div>
