@@ -18,30 +18,20 @@ class LoginForm extends Component{
     const password = this.props.fields.password;
 
     return(
-      <div id="myModal" className="modal">
-        <div className="modal-content">
-          <button style={{float:'right', border:'none'}} onClick={this.closeModal}>x</button>
-          <div style={{clear:'both'}}></div>
-          <div className="container">
-            <div className="row">
-              <div className="one-half column">
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                  <p>Log in</p>
-                  <input className="u-full-width" type="email" placeholder="email" {...email}  />
-                  <div>
-                    {email.touched ? email.error : ''}
-                  </div>
-                  <input className="u-full-width" type="password" placeholder="password" {...password} />
-                  <div>
-                    {password.touched ? password.error : ''}
-                  </div>
-                  <button className="u-full-width" type="submit">Log in</button>
-                </form>
-              </div>
-            </div>
-          </div>
+
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <p>Log in</p>
+        <input className="u-full-width" type="email" placeholder="email" {...email}  />
+        <div>
+          {email.touched ? email.error : ''}
         </div>
-      </div>
+        <input className="u-full-width" type="password" placeholder="password" {...password} />
+        <div>
+          {password.touched ? password.error : ''}
+        </div>
+        <button className="u-full-width" type="submit">Log in</button>
+      </form>
+
     )
   }
 }
