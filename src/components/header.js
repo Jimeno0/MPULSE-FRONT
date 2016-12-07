@@ -31,7 +31,7 @@ class Header extends Component{
           </ul>
         </div>
 
-        <Modal handleDisplay={this.toogleModal.bind(this)} display={this.state.display}/>
+        <Modal display={this.state.display}/>
         <img  className="header-bg" src="../../assets/images/header_image.png" alt="header-img"></img>
         <SearchInput />
       </div>

@@ -7,6 +7,9 @@ class Modal extends Component{
   onSubmit(props){
     this.props.loginUser(props);
     console.log('yippi hay yai!');
+    this.closeModal();
+  }
+  closeModal(){
     document.getElementsByClassName("modal")[0].style.setProperty('display','none');
   }
 
@@ -18,7 +21,7 @@ class Modal extends Component{
     return(
       <div style={{display:this.props.display}} id="myModal" className="modal">
         <div className="modal-content">
-          <button style={{float:'right', border:'none'}} onClick={this.props.handleDisplay}>x</button>
+          <button style={{float:'right', border:'none'}} onClick={this.closeModal}>x</button>
           <div style={{clear:'both'}}></div>
           <div className="container">
 
