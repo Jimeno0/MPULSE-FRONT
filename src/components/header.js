@@ -10,13 +10,13 @@ class Header extends Component{
   constructor(props){
     super(props);
     this.state = {display: 'none'};
-
   }
 
   toogleModal(event){
     event.preventDefault();
     this.setState({display: (this.state.display === 'none' ? 'block' : 'none')})
   }
+
   render(){
     const height = '400px';
 
@@ -26,7 +26,7 @@ class Header extends Component{
           <ul>
             <li><img src="../../assets/icons/logo.svg" alt="mpulse"/></li>
             <li><a onClick={this.toogleModal.bind(this)} href="">Sign up</a></li>
-            <li><a href="">|</a></li>
+            <li><a>|</a></li>
             <li><a onClick={this.toogleModal.bind(this)} href="">Log in</a></li>
           </ul>
         </div>
