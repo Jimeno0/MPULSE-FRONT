@@ -23,7 +23,6 @@ class Modal extends Component{
     const handleSubmit = this.props.handleSubmit;
     const email = this.props.fields.email;
     const password = this.props.fields.password;
-    console.log(email);
 
     return(
       <div style={{display:this.props.display}} id="myModal" className="modal">
@@ -38,9 +37,12 @@ class Modal extends Component{
                   <p>Log in</p>
                   <input className="u-full-width" type="email" placeholder="email" {...email}  />
                   <div>
-                    {email.error}
+                    {email.touched ? email.error : ''}
                   </div>
                   <input className="u-full-width" type="password" placeholder="password" {...password} />
+                  <div>
+                    {password.touched ? password.error : ''}
+                  </div>
                   <button className="u-full-width" type="submit">Log in</button>
                 </form>
               </div>
@@ -68,7 +70,10 @@ function validate(value) {
   const errors = {};
 
   if (!value.email) {
-    errors.email = 'email cant be empty';
+    errors.email = 'Enter a email';
+  }
+  if (!value.password || value.password.length < 8) {
+    errors.password = 'Password should has more than 8 chars';
   }
   return errors;
 }
