@@ -15,8 +15,8 @@ class Modal extends Component{
     return(
       <div className="modal">
         <div className="modal-content">
-          <button style={{float:'right', border:'none'}} onClick={this.closeModal}>x</button>
-          <div style={{clear:'both'}}></div>
+          <button className="close-modal-btn" onClick={this.closeModal}>x</button>
+          <div className="clearfix"></div>
           <div className="container">
             <div className="row">
               <div className="one-half column">

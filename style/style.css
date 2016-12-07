@@ -5,6 +5,9 @@
 body{
   font-family: brownRegular;
 }
+.clearfix{
+  clear:both;
+}
 /*CARD*/
 .card {
   margin: 20px 15px;
@@ -154,7 +157,7 @@ body{
 /*MODAL*/
 /* The Modal (background) */
 .modal {
-    padding: 20% 0;
+    padding: 10% 0;
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -180,4 +183,17 @@ body{
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+.close-modal-btn{
+  float:right;
+  border:none;
 }
