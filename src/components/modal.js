@@ -4,19 +4,10 @@ import { reduxForm } from 'redux-form';
 import { loginUser } from '../actions/index';
 
 class Modal extends Component{
-
-  handlerLogin(event){
-    event.preventDefault();
-    console.log(event);
-
-  this.props.handleDisplay(event);
-  }
-
-  handlerRegister(event){
-    event.preventDefault(event);
-    console.log(event);
-
-  this.props.handleDisplay(event);
+  onSubmit(props){
+    this.props.loginUser(props);
+    console.log('yippi hay yai!');
+    document.getElementsByClassName("modal")[0].style.setProperty('display','none');
   }
 
   render(){
@@ -33,7 +24,7 @@ class Modal extends Component{
 
             <div className="row">
               <div className="one-half column">
-                <form onSubmit={handleSubmit(this.props.loginUser)}>
+                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                   <p>Log in</p>
                   <input className="u-full-width" type="email" placeholder="email" {...email}  />
                   <div>
