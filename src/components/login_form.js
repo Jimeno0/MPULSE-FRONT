@@ -20,16 +20,12 @@ class LoginForm extends Component{
     return(
 
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <p>Log in</p>
-        <input className="u-full-width" type="email" placeholder="email" {...email}  />
-        <div>
-          {email.touched ? email.error : ''}
-        </div>
-        <input className="u-full-width" type="password" placeholder="password" {...password} />
-        <div>
-          {password.touched ? password.error : ''}
-        </div>
-        <button className="u-full-width" type="submit">Log in</button>
+        {email.touched ? email.error : ''}
+        <input className="u-full-width" type="email" placeholder="Email" {...email}  />
+        {password.touched ? password.error : ''}
+        <input className="u-full-width" type="password" placeholder="Password" {...password} />
+        <button className="u-full-width modal-forgot-password" type="submit">Forgot password?</button>
+        <button className="u-full-width modal-submit" type="submit">LOG IN</button>
       </form>
 
     )
@@ -43,7 +39,7 @@ function validate(value) {
     errors.email = 'Enter a email';
   }
   if (!value.password || value.password.length < 8) {
-    errors.password = 'Password should has more than 8 chars';
+    errors.password = 'Password must be at least 8 characters';
   }
   return errors;
 }

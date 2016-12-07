@@ -15,9 +15,16 @@ class Modal extends Component{
     return(
       <div className="modal">
         <div className="modal-content">
-          <button className="close-modal-btn" onClick={this.closeModal}>x</button>
+          <button className="close-modal-btn" onClick={this.closeModal}>
+            <img src="./assets/icons/X.svg" alt="close"></img>
+          </button>
           <div className="clearfix"></div>
           <div className="container">
+            <div className="row">
+              <img className="modal-logo" alt="logo" src="./assets/icons/MPULSE_logo_big.svg"/>
+              <div className="one-half column">
+              </div>
+            </div>
             <div className="row">
               <div className="one-half column">
                 <LoginForm />

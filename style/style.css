@@ -2,8 +2,12 @@
     font-family: brownRegular;
     src: url(./typo_brown/Brown-Regular.otf);
 }
+@font-face {
+    font-family: brownLight;
+    src: url(./typo_brown/Brown-Light.otf);
+}
 body{
-  font-family: brownRegular;
+  font-family: brownLight;
 }
 .clearfix{
   clear:both;
@@ -177,7 +181,7 @@ body{
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -194,6 +198,43 @@ body{
     to {top: 0; opacity: 1}
 }
 .close-modal-btn{
-  float:right;
+  position: absolute;
+  right: 0;
+  top: 0;
   border:none;
+  padding: 3px 15px;
+}
+.modal-content input{
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  background-color:none;
+}
+.modal-submit{
+  font-size: 0.9em;
+  letter-spacing: 0.05em;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+  background-color: #303030;
+  margin-bottom: 2em;
+}
+.modal-submit:hover{
+  color: #ffffff;
+}
+
+.modal-logo{
+  padding: 57px 0;
+  display: block;
+  margin: 0 auto;
+  width: 41%;
+}
+
+
+.modal-forgot-password{
+  border: none;
+  text-align: right;
+  padding: 0;
+  text-transform: none;
+  margin-bottom: 1.5rem;
 }

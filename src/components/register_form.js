@@ -22,20 +22,16 @@ class RegisterForm extends Component{
     return(
 
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <p>Sign up</p>
-        <input className="u-full-width" type="text" placeholder="user name" {...username}  />
-        <div>
-          {username.touched ? username.error : ''}
-        </div>
-        <input className="u-full-width" type="email" placeholder="email" {...email}  />
-        <div>
-          {email.touched ? email.error : ''}
-        </div>
-        <input className="u-full-width" type="password" placeholder="password" {...password} />
-        <div>
-          {password.touched ? password.error : ''}
-        </div>
-        <button className="u-full-width" type="submit">Log in</button>
+        {username.touched ? username.error : ''}
+        <input className="u-full-width" type="text" placeholder="Username" {...username}  />
+
+        {email.touched ? email.error : ''}
+        <input className="u-full-width" type="email" placeholder="Email" {...email}  />
+        {password.touched ? password.error : ''}
+
+        <input className="u-full-width" type="password" placeholder="Password" {...password} />
+
+        <button className="u-full-width modal-submit" type="submit">SIGN UP</button>
       </form>
 
     )
@@ -51,7 +47,7 @@ function validate(value) {
     errors.email = 'Enter a email';
   }
   if (!value.password || value.password.length < 8) {
-    errors.password = 'Password should has more than 8 chars';
+    errors.password = 'Password must be at least 8 characters';
   }
   return errors;
 }
