@@ -37,6 +37,9 @@ class Modal extends Component{
                 <form onSubmit={handleSubmit(this.props.loginUser)}>
                   <p>Log in</p>
                   <input className="u-full-width" type="email" placeholder="email" {...email}  />
+                  <div>
+                    {email.error}
+                  </div>
                   <input className="u-full-width" type="password" placeholder="password" {...password} />
                   <button className="u-full-width" type="submit">Log in</button>
                 </form>
@@ -61,7 +64,17 @@ class Modal extends Component{
   }
 }
 
+function validate(value) {
+  const errors = {};
+
+  if (!value.email) {
+    errors.email = 'email cant be empty';
+  }
+  return errors;
+}
+
 export default reduxForm({
   form: 'LoginForm',
-  fields:['email','password']
+  fields:['email','password'],
+  validate
 },null, { loginUser })(Modal);
