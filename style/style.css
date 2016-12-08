@@ -109,13 +109,16 @@ body{
     float: right;
 }
 
-.navbar li a {
+.navbar li span {
     display: inline-block;
     padding: 8px;
     color: white;
     text-decoration: none;
     font-size: 0.95em;
     letter-spacing: 0.05em;
+}
+.navbar li:hover {
+  cursor: pointer;
 }
 .navbar li img {
     display: inline-block;
