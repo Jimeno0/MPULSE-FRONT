@@ -10,13 +10,15 @@ class NavBar extends Component{
   }
   handleLogout(event){
     const params = {
-      token:this.props.user.token
+      data:{
+        token: this.props.user.token
+      }
     }
     this.props.logoutUser(params);
   }
 
   render(){
-    let isLoggedIn = this.props.user.name;
+    let isLoggedIn = this.props.user.token;
     let navbarFeed = null;
     if (isLoggedIn) {
       navbarFeed  = <li>

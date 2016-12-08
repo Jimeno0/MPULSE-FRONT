@@ -16,7 +16,7 @@ export function fetchConcerts(term){
 }
 
 export function loginUser(props) {
-  const request = axios.post(`${API_URL}/login`, props);
+  const request = axios.post(`${API_URL}login`, props);
   return{
     type: LOGIN_USER,
     payload: request
@@ -31,9 +31,9 @@ export function registerUser(props) {
 }
 export function logoutUser(props) {
   console.log('logout function', props);
-  // const request = axios.delete(`${API_URL}/logout`, props);
+  const request = axios.delete(`${API_URL}logout`, props);
   return{
     type: LOGOUT_USER,
-    payload: 'request'
+    payload: request
   }
 }
