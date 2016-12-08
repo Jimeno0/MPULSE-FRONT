@@ -4,69 +4,59 @@ import { bindActionCreators } from 'redux';
 import { logoutUser } from '../actions/index';
 
 
-class NavBar extends Component{
-  toogleModal(){
-    document.getElementsByClassName("modal")[0].style.setProperty('display','block');
+class NavBar extends Component {
+  toogleModal() {
+    document.getElementsByClassName('modal')[0].style.setProperty('display', 'block');
   }
-  handleLogout(event){
+  handleLogout() {
     const { user, logoutUser } = this.props;
 
     const params = {
-      data:{
+      data: {
         token: user.token
       }
-    }
+    };
     logoutUser(params);
   }
 
-  render(){
+  render() {
     const { user } = this.props;
     let navbarFeed = null;
 
     if (user && user.token) {
-      navbarFeed  = <li>
+      navbarFeed = (<li>
         <span>{this.props.user.name}</span>
         <span>|</span>
         <span onClick={this.handleLogout.bind(this)}>Log out</span>
-      </li>
+      </li>);
     }
-    else{
-      navbarFeed = <li onClick={this.toogleModal.bind(this)}>
+    else {
+      navbarFeed = (<li onClick={this.toogleModal.bind(this)}>
         <span>Sign up</span>
         <span>|</span>
         <span>Log in</span>
-      </li>
+      </li>);
     }
 
 
-    return(
+    return (
       <div className="navbar">
         <ul>
-          <li><img src="../../assets/icons/logo.svg" alt="mpulse"/></li>
+          <li><img src="../../assets/icons/logo.svg" alt="mpulse" /></li>
           {navbarFeed}
         </ul>
       </div>
-    )
+    );
   }
 }
 
 
-const mapStateToProps = (state) =>({
+const mapStateToProps = (state) => ({
   user: state.user,
-})
-
-
-
-// function mapStateToProps(state){
-//   return {user: state.user}
-// }
-
+});
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({logoutUser},dispatch);
+  return bindActionCreators({ logoutUser }, dispatch);
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
-
-
-// export default NavBar
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
