@@ -9,18 +9,21 @@ class NavBar extends Component{
     document.getElementsByClassName("modal")[0].style.setProperty('display','block');
   }
   handleLogout(event){
+    const { user, logoutUser } = this.props;
+
     const params = {
       data:{
-        token: this.props.user.token
+        token: user.token
       }
     }
-    this.props.logoutUser(params);
+    logoutUser(params);
   }
 
   render(){
-    let isLoggedIn = this.props.user.token;
+    const { user } = this.props;
     let navbarFeed = null;
-    if (isLoggedIn) {
+
+    if (user && user.token) {
       navbarFeed  = <li>
         <span>{this.props.user.name}</span>
         <span>|</span>
@@ -47,14 +50,23 @@ class NavBar extends Component{
   }
 }
 
-function mapStateToProps(state){
-  return {user: state.user}
-}
-function mapToDispatch(dispatch) {
+
+const mapStateToProps = (state) =>({
+  user: state.user,
+})
+
+
+
+// function mapStateToProps(state){
+//   return {user: state.user}
+// }
+
+
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({logoutUser},dispatch);
 }
 
-export default connect(mapStateToProps,mapToDispatch)(NavBar);
+export default connect(mapStateToProps,mapDispatchToProps)(NavBar);
 
 
 // export default NavBar
