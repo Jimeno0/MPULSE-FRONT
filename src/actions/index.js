@@ -30,9 +30,10 @@ export function registerUser(props) {
   }
 }
 export function logoutUser(props) {
-  const request = axios.delete(`${API_URL}/logout`, props);
+  console.log('logout function', props);
+  // const request = axios.delete(`${API_URL}/logout`, props);
   return{
     type: LOGOUT_USER,
-    payload: request
+    payload: 'request'
   }
 }

@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { bindActionCreators } from 'redux';
+import { logoutUser } from '../actions/index';
 
 
 class NavBar extends Component{
   toogleModal(){
     document.getElementsByClassName("modal")[0].style.setProperty('display','block');
+  }
+  handleLogout(event){
+    const params = {
+      token:this.props.user.token
+    }
+    this.props.logoutUser(params);
   }
 
   render(){
@@ -15,7 +22,7 @@ class NavBar extends Component{
       navbarFeed  = <li>
         <span>{this.props.user.name}</span>
         <span>|</span>
-        <span onClick={this.toogleModal.bind(this)}>Log out</span>
+        <span onClick={this.handleLogout.bind(this)}>Log out</span>
       </li>
     }
     else{
@@ -41,8 +48,11 @@ class NavBar extends Component{
 function mapStateToProps(state){
   return {user: state.user}
 }
+function mapToDispatch(dispatch) {
+  return bindActionCreators({logoutUser},dispatch);
+}
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps,mapToDispatch)(NavBar);
 
 
 // export default NavBar
