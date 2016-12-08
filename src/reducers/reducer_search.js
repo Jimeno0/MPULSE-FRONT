@@ -7,7 +7,6 @@ export default function(state=[], action){
     if (!action.payload.data) {
       return []
     }
-    console.log('entra',action);
     return action.payload.data
 
   }
