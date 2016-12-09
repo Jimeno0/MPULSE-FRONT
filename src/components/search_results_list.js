@@ -16,8 +16,10 @@ class SearchResultList extends Component {
 
   render() {
     return (
-      <div className="row">
-        {this.renderList()}
+      <div>
+        <div className="row">
+          {this.renderList()}
+        </div>
       </div>
     );
   }
