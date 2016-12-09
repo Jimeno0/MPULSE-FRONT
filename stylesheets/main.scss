@@ -1,0 +1,22 @@
+@font-face {
+    font-family: brownRegular;
+    src: url(./typo_brown/Brown-Regular.otf);
+}
+@font-face {
+    font-family: brownLight;
+    src: url(./typo_brown/Brown-Light.otf);
+}
+body{
+  font-family: brownLight;
+}
+.clearfix{
+  clear:both;
+}
+div{}
+
+@import "partials/cards";
+@import "partials/dropdown";
+@import "partials/header";
+@import "partials/modal";
+@import "partials/navbar";
+@import "partials/searchbar";
