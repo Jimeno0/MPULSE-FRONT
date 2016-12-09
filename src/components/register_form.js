@@ -15,15 +15,15 @@ class RegisterForm extends Component{
   render(){
     const handleSubmit = this.props.handleSubmit;
 
-    const username = this.props.fields.username;
+    const name = this.props.fields.name;
     const email = this.props.fields.email;
     const password = this.props.fields.password;
 
     return(
 
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        {username.touched ? username.error : ''}
-        <input className="u-full-width" type="text" placeholder="Username" {...username}  />
+        {name.touched ? name.error : ''}
+        <input className="u-full-width" type="text" placeholder="Username" {...name}  />
 
         {email.touched ? email.error : ''}
         <input className="u-full-width" type="email" placeholder="Email" {...email}  />
@@ -40,8 +40,8 @@ class RegisterForm extends Component{
 
 function validate(value) {
   const errors = {};
-  if (!value.username) {
-    errors.username = 'Enter a username';
+  if (!value.name) {
+    errors.name = 'Enter a name';
   }
   if (!value.email) {
     errors.email = 'Enter a email';
@@ -54,6 +54,6 @@ function validate(value) {
 
 export default reduxForm({
   form: 'registerForm',
-  fields:['username','email','password'],
+  fields:['name','email','password'],
   validate
 },null, { registerUser })(RegisterForm);

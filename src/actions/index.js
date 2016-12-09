@@ -27,7 +27,7 @@ export function loginUser(props) {
 export function registerUser(props) {
   const request = axios.post(`${API_URL}/register`, props);
   return {
-    type: REGISTER_USER,
+    type: LOGIN_USER,
     payload: request
   };
 }
