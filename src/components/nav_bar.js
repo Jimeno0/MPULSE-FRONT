@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { logoutUser } from '../actions/index';
 import { Link } from 'react-router';
+import { logoutUser } from '../actions/index';
 
 
 class NavBar extends Component {
@@ -11,7 +11,6 @@ class NavBar extends Component {
   }
   handleLogout() {
     const { user, logoutUser } = this.props;
-
     const params = {
       data: {
         token: user.token

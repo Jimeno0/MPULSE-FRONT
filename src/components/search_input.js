@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchConcerts } from '../actions/index';
+import { setSearchedArtist } from '../actions/index';
 
 class SearchInput extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class SearchInput extends Component {
     event.preventDefault();
 
     this.props.fetchConcerts(this.state.term);
+    this.props.setSearchedArtist(this.state.term);
     this.setState({ term: '' });
   }
   render() {
@@ -33,6 +35,8 @@ class SearchInput extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => (bindActionCreators({ fetchConcerts }, dispatch));
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ fetchConcerts, setSearchedArtist }, dispatch
+  ));
 
 export default connect(null, mapDispatchToProps)(SearchInput);
