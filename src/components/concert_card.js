@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addToFav } from '../actions/index';
+
 
 const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DIC'];
 
-export default class ConcertCard extends Component {
+class ConcertCard extends Component {
+  addToFav() {
+    const params = {
+      token: this.props.user.token,
+      concert: this.props.concert,
+    };
+    this.props.addToFav(params);
+  }
   render() {
     const concert = this.props.concert ? this.props.concert : '';
     let day = '';
@@ -18,9 +29,10 @@ export default class ConcertCard extends Component {
         <div className="card-img-container">
           <img className="card-image" src={concert.image} alt={concert.name} />
           <img
+            onClick={this.addToFav.bind(this)}
             className="card-like"
             alt="like"
-            src="../../assets/icons/HEARTBEAT.svg" 
+            src="../../assets/icons/HEARTBEAT.svg"
           />
         </div>
         <div className="card-body">
@@ -40,3 +52,8 @@ export default class ConcertCard extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({ user: state.user });
+
+const mapDispatchToProps = (dispatch) => (bindActionCreators({ addToFav }, dispatch));
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConcertCard);
