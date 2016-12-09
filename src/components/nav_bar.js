@@ -24,11 +24,16 @@ class NavBar extends Component {
     let navbarFeed = null;
 
     if (user && user.token) {
-      navbarFeed = (<li>
-        <span>{this.props.user.name}</span>
-        <span>|</span>
-        <span onClick={this.handleLogout.bind(this)}>Log out</span>
-      </li>);
+      navbarFeed = (
+        <li className="dropdown">
+          <span className="dropbtn">{this.props.user.name}</span>
+          <div className="dropdown-content">
+            <a>Profile</a>
+            <a>Settings</a>
+            <a onClick={this.handleLogout.bind(this)}>Log out</a>
+          </div>
+        </li>
+    );
     } else {
       navbarFeed = (<li onClick={this.toogleModal.bind(this)}>
         <span>Sign up</span>
