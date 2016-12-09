@@ -29,8 +29,7 @@ class NavBar extends Component {
         <span>|</span>
         <span onClick={this.handleLogout.bind(this)}>Log out</span>
       </li>);
-    }
-    else {
+    } else {
       navbarFeed = (<li onClick={this.toogleModal.bind(this)}>
         <span>Sign up</span>
         <span>|</span>
@@ -55,8 +54,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ logoutUser }, dispatch);
-}
+const mapDispatchToProps = (dispatch) => (bindActionCreators({ logoutUser }, dispatch));
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

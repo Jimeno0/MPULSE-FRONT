@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 
 import SearchInput from './search_input';
-import Modal from './modal';
+
 import NavBar from './nav_bar';
 
-class Header extends Component{
+class Header extends Component {
 
-  toogleModal(){
+  toogleModal() {
     document.getElementsByClassName("modal")[0].style.setProperty('display','block');
   }
 
-  render(){
+  render() {
     return (
-      <div>
+      <div className="header-container">
         <NavBar />
-        <Modal/>
-        <img  className="header-bg" src="../../assets/images/header_image.png" alt="header-img"></img>
+        <img
+          className="header-bg"
+          src="../../assets/images/header_image.png"
+          alt="header-img"
+        />
         <SearchInput />
       </div>
-    )
+    );
   }
 }
 export default Header;

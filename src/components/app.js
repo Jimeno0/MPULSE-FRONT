@@ -5,6 +5,7 @@ import { loginUser } from '../actions/index';
 
 import SearchResultList from './search_results_list';
 import Header from './header';
+import Modal from './modal';
 
  class App extends Component {
 
@@ -19,6 +20,7 @@ import Header from './header';
   render() {
     return (
       <div>
+        <Modal />
         <Header />
         <div className="container">
           <SearchResultList />
