@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { logoutUser } from '../actions/index';
+import { Link } from 'react-router';
 
 
 class NavBar extends Component {
@@ -28,7 +29,7 @@ class NavBar extends Component {
         <li className="dropdown">
           <span className="dropbtn">{this.props.user.name}</span>
           <div className="dropdown-content">
-            <a>Profile</a>
+            <Link to={`/${user.name}`}>Profile</Link>
             <a>Settings</a>
             <a onClick={this.handleLogout.bind(this)}>Log out</a>
           </div>
@@ -45,7 +46,11 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         <ul>
-          <li><img src="../../assets/icons/logo.svg" alt="mpulse" /></li>
+          <li>
+            <Link to="/">
+              <img src="../../assets/icons/logo.svg" alt="mpulse" />
+            </Link>
+          </li>
           {navbarFeed}
         </ul>
       </div>

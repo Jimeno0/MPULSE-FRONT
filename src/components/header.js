@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-
 import SearchInput from './search_input';
-
 import NavBar from './nav_bar';
 
 class Header extends Component {
 
   toogleModal() {
-    document.getElementsByClassName("modal")[0].style.setProperty('display','block');
+    document.getElementsByClassName('modal')[0].style.setProperty('display', 'block');
   }
 
   render() {

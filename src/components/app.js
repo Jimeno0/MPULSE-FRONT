@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { loginUser } from '../actions/index';
 
-// import SearchResultList from './search_results_list';
-import SearchResult from './search_results';
-
 import Header from './header';
 import Modal from './modal';
 
@@ -24,9 +21,7 @@ import Modal from './modal';
       <div>
         <Modal />
         <Header />
-        <div className="container">
-          <SearchResult />
-        </div>
+        {this.props.children}
       </div>
     );
   }

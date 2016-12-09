@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
-
-const Greeting = () => (<div>Hi impulse</div>);
+import Home from './components/home';
+import User from './components/user';
 
 
 export default(
   <Route path="/" component={App}>
-    <Route path="greet2" component={Greeting} />
-    <Route path="greet3" component={Greeting} />
-    <Route path="greet4" component={Greeting} />
+    <IndexRoute component={Home} />
+    <Route path="/:user" component={User} />
   </Route>
   );
