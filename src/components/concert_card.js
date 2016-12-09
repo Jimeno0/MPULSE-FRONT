@@ -17,7 +17,11 @@ export default class ConcertCard extends Component {
       <div className="card">
         <div className="card-img-container">
           <img className="card-image" src={concert.image} alt={concert.name} />
-          <img className="card-like" alt="like" src="../../assets/icons/HEARTBEAT.svg" />
+          <img
+            className="card-like"
+            alt="like"
+            src="../../assets/icons/HEARTBEAT.svg" 
+          />
         </div>
         <div className="card-body">
           <div className="card-date">

@@ -42,7 +42,6 @@ class NavBar extends Component {
       </li>);
     }
 
-
     return (
       <div className="navbar">
         <ul>

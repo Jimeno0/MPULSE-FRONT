@@ -33,8 +33,6 @@ class SearchInput extends Component {
   }
 }
 
-function mapToDispatch(dispatch) {
-  return bindActionCreators({ fetchConcerts }, dispatch);
-}
+const mapDispatchToProps = (dispatch) => (bindActionCreators({ fetchConcerts }, dispatch));
 
-export default connect(null, mapToDispatch)(SearchInput);
+export default connect(null, mapDispatchToProps)(SearchInput);
