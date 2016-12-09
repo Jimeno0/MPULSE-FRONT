@@ -12,7 +12,7 @@ body{
 .clearfix{
   clear:both;
 }
-div{}
+$primary-color: #303030;
 
 @import "partials/cards";
 @import "partials/dropdown";

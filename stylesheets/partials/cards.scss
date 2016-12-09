@@ -16,7 +16,15 @@
   font-weight: normal;
   height: 2.2em;
   margin-top: 10px;
+  border-color: $primary-color;
+  color: $primary-color;
 }
+.card-button:hover{
+  border-color: $primary-color;
+  background: $primary-color;
+  color: white;
+}
+
 .card-date{
   width: 25%;
   display: inline-block;
