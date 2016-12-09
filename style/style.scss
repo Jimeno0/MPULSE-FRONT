@@ -90,7 +90,10 @@ body{
 .card-like:hover{
   cursor: pointer;
 }
-
+.card-like:active {
+  transition: all .1s ease-in-out;
+  transform: scale(1.1);
+}
 .card p{
   margin-bottom: 0;
 }
