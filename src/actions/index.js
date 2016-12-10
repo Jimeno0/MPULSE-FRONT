@@ -9,6 +9,7 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const ADD_CONCERT_TO_FAV = 'ADD_CONCERT_TO_FAV';
 export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
 export const ADD_ARTIST_TO_FAV = 'ADD_ARTIST_TO_FAV';
+export const GET_USER_ARTISTS = 'GET_USER_ARTISTS';
 
 export function fetchConcerts(term) {
   const url = `${API_URL}concerts/search/${term}`;
@@ -59,9 +60,16 @@ export function setSearchedArtist(term) {
 
 export function addArtistToFav(params) {
   const request = axios.post(`${API_URL}artist`, params);
-  console.log('action: ', params);
   return {
     type: ADD_ARTIST_TO_FAV,
+    payload: request
+  };
+}
+export function fetchUserArtist(token) {
+  console.log('fetching artists', token);
+  const request = axios.get(`${API_URL}artist/${token}`);
+  return {
+    type: GET_USER_ARTISTS,
     payload: request
   };
 }

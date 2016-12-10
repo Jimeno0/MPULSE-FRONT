@@ -10,12 +10,12 @@ import reducers from './reducers';
 
 
 require('../stylesheets/main.scss');
-
-
+const devExtension = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  // <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(reducers, devExtension)}>
     <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.querySelector('#container'));
