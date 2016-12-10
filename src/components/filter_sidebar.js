@@ -8,9 +8,13 @@ class FilterSidebar extends Component {
     const token = window.localStorage.getItem('token');
     this.props.fetchUserArtist(token);
   }
-  componentDidUpdate() {
-    const artists = this.props.userArtists;
-    console.log('artists on update', artists);
+  renderArtists() {
+    const { userArtists } = this.props;
+    console.log(userArtists);
+    if (userArtists && userArtists[0]) {
+      return userArtists.map((artist) => (<li key={artist.name}>{artist.name}</li>));
+    }
+      return (<li>No favourites artist yet</li>);
   }
   render() {
     return (
@@ -18,9 +22,7 @@ class FilterSidebar extends Component {
         <li>Favourite concerts</li>
         <li>Artist</li>
         <ul>
-          <li>Bonobo</li>
-          <li>Claptone</li>
-          <li>Moderat</li>
+          {this.renderArtists()}
         </ul>
       </ul>
 
