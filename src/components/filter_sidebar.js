@@ -4,10 +4,13 @@ import { bindActionCreators } from 'redux';
 import { fetchUserArtist } from '../actions/index';
 
 class FilterSidebar extends Component {
+  componentDidMount() {
+    const token = window.localStorage.getItem('token');
+    this.props.fetchUserArtist(token);
+  }
   componentDidUpdate() {
-    const user = this.props.user;
-    console.log(user);
-    this.props.fetchUserArtist(user.token);
+    const artists = this.props.userArtists;
+    console.log('artists on update', artists);
   }
   render() {
     return (
@@ -27,7 +30,8 @@ class FilterSidebar extends Component {
 
 const mapDispatchToProps = (dispatch) => (bindActionCreators({ fetchUserArtist }, dispatch));
 
-const mapStateToProps = (state) => ({ user: state.user });
+const mapStateToProps = (state) => ({
+  userArtists: state.userArtists
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterSidebar);
-// export default FilterSidebar;
