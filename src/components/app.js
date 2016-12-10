@@ -8,7 +8,7 @@ import Modal from './modal';
 
  class App extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     const token = window.localStorage.getItem('token');
     const params = { token };
 

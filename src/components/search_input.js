@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchConcerts } from '../actions/index';
-import { setSearchedArtist } from '../actions/index';
+import { fetchConcerts, setSearchedArtist } from '../actions/index';
 
 class SearchInput extends Component {
   constructor(props) {

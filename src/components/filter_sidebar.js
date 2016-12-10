@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchUserArtist } from '../actions/index';
 
 class FilterSidebar extends Component {
-  componentWillMount() {
+  componentDidUpdate() {
     const user = this.props.user;
-    console.log('User: ', user );
+    console.log(user);
+    this.props.fetchUserArtist(user.token);
   }
   render() {
     return (
@@ -22,7 +25,9 @@ class FilterSidebar extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => (bindActionCreators({ fetchUserArtist }, dispatch));
+
 const mapStateToProps = (state) => ({ user: state.user });
 
-export default connect(mapStateToProps)(FilterSidebar);
+export default connect(mapStateToProps, mapDispatchToProps)(FilterSidebar);
 // export default FilterSidebar;
