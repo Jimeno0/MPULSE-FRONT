@@ -10,6 +10,7 @@ export const ADD_CONCERT_TO_FAV = 'ADD_CONCERT_TO_FAV';
 export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
 export const ADD_ARTIST_TO_FAV = 'ADD_ARTIST_TO_FAV';
 export const GET_USER_ARTISTS = 'GET_USER_ARTISTS';
+export const GET_USER_FAVS = 'GET_USER_FAVS';
 
 export function fetchConcerts(term) {
   const url = `${API_URL}concerts/search/${term}`;
@@ -66,10 +67,18 @@ export function addArtistToFav(params) {
   };
 }
 export function fetchUserArtist(token) {
-  console.log('fetching artists', token);
   const request = axios.get(`${API_URL}artist/${token}`);
   return {
     type: GET_USER_ARTISTS,
+    payload: request
+  };
+}
+
+export function fetchFavs(token) {
+  console.log('fetching favs', token);
+  const request = axios.get(`${API_URL}concerts/${token}`);
+  return {
+    type: GET_USER_FAVS,
     payload: request
   };
 }
