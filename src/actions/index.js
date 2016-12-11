@@ -78,7 +78,7 @@ export function fetchFavs(token) {
   console.log('fetching favs', token);
   const request = axios.get(`${API_URL}concerts/${token}`);
   return {
-    type: GET_USER_FAVS,
+    type: SEARCH_CONCERTS,
     payload: request
   };
 }
