@@ -16,15 +16,15 @@ class SearchResultHeader extends Component {
   }
 
   render() {
-    console.log('artist', this.props.artistSearched);
-    const { artistSearched } = this.props;
+    console.log('artist', this.props.searchedArtist);
+    const { searchedArtist } = this.props;
       let header = null;
-    if (artistSearched) {
+    if (searchedArtist) {
       header = (
         <div>
-          <span>Search for {artistSearched}</span>
+          <span>Search for {searchedArtist}</span>
           <button
-            value={artistSearched}
+            value={searchedArtist}
             onClick={this.handleFollowArtist.bind(this)}
           >Follow artist</button>
         </div>
@@ -44,7 +44,7 @@ class SearchResultHeader extends Component {
 const mapDispatchToProps = (dispatch) => (bindActionCreators({ addArtistToFav }, dispatch));
 
 const mapStateToProps = (state) => ({
-   artistSearched: state.artist,
+   searchedArtist: state.searchedArtist,
    user: state.user
  });
 

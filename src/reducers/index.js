@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   searchConcerts: SearchReducer,
   form: formReducer,
   user: UserReducer,
-  artist: ArtistReducer,
+  searchedArtist: ArtistReducer,
   userArtists: UserArtistsReducer,
 });
 
