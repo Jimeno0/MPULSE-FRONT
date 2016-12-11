@@ -9,7 +9,7 @@ export default class SearchResult extends Component {
     return (
       <div>
         <SearchResultHeader />
-        <SearchResultList />
+        <SearchResultList numberOfColumns={3} />
       </div>
     );
   }

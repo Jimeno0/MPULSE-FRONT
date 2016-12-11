@@ -11,7 +11,7 @@ export default class Home extends Component {
           <FilterSidebar />
         </div>
         <div className="two-thirds column">
-          <SearchResultList />
+          <SearchResultList numberOfColumns={2} />
         </div>
       </div>
     </div>

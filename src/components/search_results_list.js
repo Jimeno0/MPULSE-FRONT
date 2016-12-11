@@ -4,14 +4,24 @@ import ConcertCard from './concert_card';
 
 class SearchResultList extends Component {
   renderList() {
-    if (this.props.searchConcerts.length === 0) {
+    const { numberOfColumns, searchConcerts } = this.props;
+    if (searchConcerts.length === 0) {
       return (<span>No concerts for this artist yet...</span>);
     }
+    const columnsClass = numberOfColumns === 2 ? 'one-half column' : 'one-third column';
+    const concertsByRow = partition(searchConcerts, numberOfColumns);
 
-    return this.props.searchConcerts.map((concert) => (
-        <ConcertCard key={concert.concert_id} concert={concert} />
-      )
-    );
+    function partition(array, n) {
+      return array.length ? [array.splice(0, n)].concat(partition(array, n)) : [];
+    }
+    return concertsByRow.map((row) => (
+      <div className="row">
+        {row.map((concert) => (
+          <div className={columnsClass}>
+            <ConcertCard key={concert.concert_id} concert={concert} />
+          </div>))}
+      </div>
+    ));
   }
 
   render() {
