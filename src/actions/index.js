@@ -71,7 +71,26 @@ export function fetchLastConcerts() {
   };
 }
 
+export function fetchFavs(token) {
+  const request = axios.get(`${API_URL}concerts/${token}`);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+    });
+  };
+}
 
+export function fetchUserArtist(token) {
+  const request = axios.get(`${API_URL}artist/${token}`);
+  return {
+    type: GET_USER_ARTISTS,
+    payload: request
+  };
+}
+
+
+
+// Handle favs
 export function addToFav(params) {
   const request = axios.post(`${API_URL}concerts/add`, params);
   return {
@@ -91,21 +110,6 @@ export function addArtistToFav(params) {
   const request = axios.post(`${API_URL}artist`, params);
   return {
     type: ADD_ARTIST_TO_FAV,
-    payload: request
-  };
-}
-export function fetchUserArtist(token) {
-  const request = axios.get(`${API_URL}artist/${token}`);
-  return {
-    type: GET_USER_ARTISTS,
-    payload: request
-  };
-}
-
-export function fetchFavs(token) {
-  const request = axios.get(`${API_URL}concerts/${token}`);
-  return {
-    type: SEARCH_CONCERTS,
     payload: request
   };
 }
