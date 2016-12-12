@@ -10,7 +10,7 @@ class RecentConcerts extends Component {
           <p>Recent Concerts</p>
         </div>
         <div className="row">
-          <ConcertsList numberOfColumns={3} lastConcerts />
+          <ConcertsList numberOfColumns={3} renderingLastConcerts />
         </div>
       </div>
 

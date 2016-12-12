@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   user: UserReducer,
   searchedArtist: ArtistReducer,
   userArtists: UserArtistsReducer,
-  recentConcerts: RecentConcertsReducer,
+  recentConcerts: RecentConcertsReducer
 });
 
 export default rootReducer;

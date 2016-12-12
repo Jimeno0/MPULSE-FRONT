@@ -6,7 +6,6 @@ import { fetchConcerts, setSearchedArtist } from '../actions/index';
 class SearchInput extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       term: ''
     };
@@ -33,7 +32,6 @@ class SearchInput extends Component {
     );
   }
 }
-
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({ fetchConcerts, setSearchedArtist }, dispatch
   ));
