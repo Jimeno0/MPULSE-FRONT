@@ -1,7 +1,10 @@
 .search-bar {
   position: absolute;
-  bottom: 45px;
+  bottom: 60px;
   width: 100%;
+  form {
+    margin-bottom: 0px;
+  }
   input{
     display: block;
     width: 73%;
@@ -15,5 +18,20 @@
     background-image: url(../assets/icons/search.svg);
     background-position: 99% 70%;
     background-repeat: no-repeat;
+  }
+  p {
+    margin: 0 auto;
+    width: 73%;
+    text-align: center;
+    color: white;
+  }
+  .header-slogan{
+    padding: 92px;
+    p:first-child{
+      font-size: $size-h1;
+    }
+    p:last-child{
+      font-size: $size-h2;
+    }
   }
 }

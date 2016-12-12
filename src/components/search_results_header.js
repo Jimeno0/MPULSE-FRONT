@@ -7,16 +7,13 @@ import { addArtistToFav } from '../actions/index';
 class SearchResultHeader extends Component {
 
   handleFollowArtist(event) {
-    console.log(event.target.value);
     const params = {
       token: this.props.user.token,
       artists: { name: event.target.value }
     };
     this.props.addArtistToFav(params);
   }
-
   render() {
-    console.log('artist', this.props.searchedArtist);
     const { searchedArtist } = this.props;
       let header = null;
     if (searchedArtist) {

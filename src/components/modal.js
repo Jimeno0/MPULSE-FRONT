@@ -5,7 +5,6 @@ import RegisterForm from './register_form';
 class Modal extends Component{
   onSubmit(props){
     this.props.loginUser(props);
-    console.log('yippi hay yai!');
     this.closeModal();
   }
   closeModal(){

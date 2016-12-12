@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ConcertsList from './concerts_list';
+import { RecentConcertsList } from './concerts_list';
 
 class RecentConcerts extends Component {
   render() {
@@ -10,7 +10,7 @@ class RecentConcerts extends Component {
           <p>Recent Concerts</p>
         </div>
         <div className="row">
-          <ConcertsList numberOfColumns={3} renderingLastConcerts />
+          <RecentConcertsList numberOfColumns={3} />
         </div>
       </div>
 

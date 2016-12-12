@@ -4,18 +4,14 @@ import ConcertCard from './concert_card';
 
 class ConcertsList extends Component {
   renderList() {
-    const { numberOfColumns, searchConcerts, recentConcerts, renderingLastConcerts } = this.props;
-    let concertsToRender;
-    if (renderingLastConcerts) {
-      concertsToRender = recentConcerts;
-    } else {
-      concertsToRender = searchConcerts;
-    }
-    if (concertsToRender.length === 0) {
+    const { numberOfColumns, concerts } = this.props;
+
+    if (concerts.length === 0) {
       return (<span>No concerts for this artist yet...</span>);
     }
+
     const columnsClass = numberOfColumns === 2 ? 'one-half column' : 'one-third column';
-    const concertsByRow = partition(concertsToRender, numberOfColumns);
+    const concertsByRow = partition(concerts, numberOfColumns);
 
     function partition(array, n) {
       return array.length ? [array.splice(0, n)].concat(partition(array, n)) : [];
@@ -29,8 +25,8 @@ class ConcertsList extends Component {
       </div>
     ));
   }
-
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="row">
@@ -41,9 +37,11 @@ class ConcertsList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  searchConcerts: state.searchConcerts,
-  recentConcerts: state.recentConcerts
-});
+export const RecentConcertsList = connect(state => ({
+  concerts: state.recentConcerts
+}))(ConcertsList);
 
-export default connect(mapStateToProps)(ConcertsList);
+export const SearchConcerts = connect(state => ({
+  concerts: state.searchConcerts
+}))(ConcertsList);
+

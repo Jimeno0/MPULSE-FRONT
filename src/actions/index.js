@@ -14,11 +14,11 @@ export const GET_USER_FAVS = 'GET_USER_FAVS';
 export const RECENT_CONCERTS = 'RECENT_CONCERTS';
 
 export function fetchConcerts(term) {
-  const url = `${API_URL}concerts/search/${term}`;
-  const request = axios.get(url);
-  return {
-    type: SEARCH_CONCERTS,
-    payload: request
+  return function (dispatch) {
+    const url = `${API_URL}concerts/search/${term}`;
+    const request = axios.get(url).then(result => {
+      dispatch({ type: SEARCH_CONCERTS, payload: result.data });
+    });
   };
 }
 
@@ -46,7 +46,6 @@ export function logoutUser(props) {
 
 export function addToFav(params) {
   const request = axios.post(`${API_URL}concerts/add`, params);
-  console.log('Params que llegan al action: ', params);
   return {
     type: ADD_CONCERT_TO_FAV,
     payload: request
@@ -84,7 +83,6 @@ export function fetchFavs(token) {
 }
 
 export function fetchLastConcerts() {
-  console.log('fetching last concerts');
   const request = axios.get(`${API_URL}concerts/last`);
   return {
     type: RECENT_CONCERTS,

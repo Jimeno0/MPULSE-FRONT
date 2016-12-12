@@ -20,6 +20,10 @@ class SearchInput extends Component {
   render() {
     return (
       <div className="search-bar">
+        <div className="header-slogan">
+          <p className="header-title">Lorem ipsum dolor sit amet</p>
+          <p className="header-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </div>
         <form onSubmit={this.handlerSubmit.bind(this)}>
           <input
             type='text' placeholder='Search artist...'

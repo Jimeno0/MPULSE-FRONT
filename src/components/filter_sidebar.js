@@ -17,7 +17,6 @@ class FilterSidebar extends Component {
   }
   renderArtists() {
     const { userArtists } = this.props;
-    console.log(userArtists);
     if (userArtists && userArtists[0]) {
       return userArtists.map((artist) => (
         <li

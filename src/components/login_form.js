@@ -3,12 +3,12 @@ import { reduxForm } from 'redux-form';
 import { loginUser } from '../actions/index';
 
 
-class LoginForm extends Component{
-  onSubmit(props){
+class LoginForm extends Component {
+  onSubmit(props) {
     this.props.loginUser(props);
     this.closeModal();
   }
-  closeModal(){
+  closeModal() {
     document.getElementsByClassName("modal")[0].style.setProperty('display','none');
   }
 

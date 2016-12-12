@@ -9,7 +9,7 @@ export default function (state = {}, action) {
       }
       return action.payload.data;
     case LOGOUT_USER :
-      return 'action.payload.data';
+      return action.payload.data;
   }
   return state;
 }
