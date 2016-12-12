@@ -7,9 +7,8 @@ export const SEARCH_CONCERTS_ERROR = 'SEARCH_CONCERTS_ERROR';
 
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 
-export const LOGIN_USER = 'LOGIN_USER';
-export const REGISTER_USER = 'REGISTER_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const ADD_CONCERT_TO_FAV = 'ADD_CONCERT_TO_FAV';
 export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
@@ -44,9 +43,13 @@ export function loginUser(props) {
 
 export function registerUser(props) {
   const request = axios.post(`${API_URL}/register`, props);
-  return {
-    type: LOGIN_USER,
-    payload: request
+
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: REGISTER_USER_ERROR, payload: error.response });
+    });
   };
 }
 export function logoutUser(props) {
