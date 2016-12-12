@@ -4,6 +4,10 @@ const API_URL = 'http://localhost:3000/';
 
 export const SEARCH_CONCERTS_SUCCESS = 'SEARCH_CONCERTS';
 export const SEARCH_CONCERTS_ERROR = 'SEARCH_CONCERTS_ERROR';
+
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+
 export const LOGIN_USER = 'LOGIN_USER';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -15,24 +19,29 @@ export const GET_USER_FAVS = 'GET_USER_FAVS';
 export const RECENT_CONCERTS = 'RECENT_CONCERTS';
 
 export function fetchConcerts(term) {
-  return function (dispatch) {
-    const url = `${API_URL}concerts/search/${term}`;
-    const request = axios.get(url)
-    .then(result => {
+  const url = `${API_URL}concerts/search/${term}`;
+  const request = axios.get(url);
+  return (dispatch) => {
+    request.then(result => {
       dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
     }).catch(error => {
-      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response })
+      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
     });
   };
 }
 
 export function loginUser(props) {
   const request = axios.post(`${API_URL}login`, props);
-  return {
-    type: LOGIN_USER,
-    payload: request
+
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: LOGIN_USER_ERROR, payload: error.response });
+    });
   };
 }
+
 export function registerUser(props) {
   const request = axios.post(`${API_URL}/register`, props);
   return {
