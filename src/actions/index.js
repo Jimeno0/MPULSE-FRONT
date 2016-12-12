@@ -17,21 +17,9 @@ export const GET_USER_ARTISTS = 'GET_USER_ARTISTS';
 export const GET_USER_FAVS = 'GET_USER_FAVS';
 export const RECENT_CONCERTS = 'RECENT_CONCERTS';
 
-export function fetchConcerts(term) {
-  const url = `${API_URL}concerts/search/${term}`;
-  const request = axios.get(url);
-  return (dispatch) => {
-    request.then(result => {
-      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
-    }).catch(error => {
-      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
-    });
-  };
-}
-
+// HANDLE USER SESSIONS
 export function loginUser(props) {
   const request = axios.post(`${API_URL}login`, props);
-
   return (dispatch) => {
     request.then(result => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
@@ -43,7 +31,6 @@ export function loginUser(props) {
 
 export function registerUser(props) {
   const request = axios.post(`${API_URL}/register`, props);
-
   return (dispatch) => {
     request.then(result => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
@@ -57,11 +44,33 @@ export function logoutUser(props) {
   const request = axios.delete(`${API_URL}logout`, props);
   return (dispatch) => {
     request.then(result => {
-      console.log('loguot:  ',result);
       dispatch({ type: LOGOUT_USER, payload: result.data });
     });
   };
 }
+
+// HANDLE CONCERTS
+export function fetchConcerts(term) {
+  const url = `${API_URL}concerts/search/${term}`;
+  const request = axios.get(url);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
+    });
+  };
+}
+
+export function fetchLastConcerts() {
+  const request = axios.get(`${API_URL}concerts/last`);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: RECENT_CONCERTS, payload: result.data });
+    });
+  };
+}
+
 
 export function addToFav(params) {
   const request = axios.post(`${API_URL}concerts/add`, params);
@@ -101,10 +110,3 @@ export function fetchFavs(token) {
   };
 }
 
-export function fetchLastConcerts() {
-  const request = axios.get(`${API_URL}concerts/last`);
-  return {
-    type: RECENT_CONCERTS,
-    payload: request
-  };
-}
