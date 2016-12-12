@@ -1,18 +1,41 @@
+// COlors
+$primary-color: #303030;
+
+// Text sizes
+$size-h1: 4.8rem;
+$size-h2: 1.9rem;
+$size-h3: 1.6rem;
+$size-normal: 1.4rem;
+$size-description: 1.2rem;
+$size-date: 2.4rem;
+
+
+
 @font-face {
-    font-family: brownRegular;
-    src: url(./typo_brown/Brown-Regular.otf);
+  font-family: BrownRegular;
+  src: url(./typo_brown/Brown-Regular.otf);
 }
 @font-face {
-    font-family: brownLight;
-    src: url(./typo_brown/Brown-Light.otf);
+    font-family: BrownRegular;
+    src: url(./typo_brown/Brown-Bold.otf);
+    font-weight: bold;
+}
+html{
+  font-family: BrownRegular;
+  font-size: 10px;
+
 }
 body{
-  font-family: brownLight;
+  font-size: $size-normal;
+  line-height: 1.6;
+  font-weight: 400;
 }
 .clearfix{
   clear:both;
 }
-$primary-color: #303030;
+
+
+
 
 @import "partials/cards";
 @import "partials/dropdown";

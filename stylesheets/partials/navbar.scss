@@ -1,5 +1,5 @@
-.navbar ul {
-
+.navbar {
+  ul {
     list-style-type: none;
     margin: 0;
      padding: 10px 0;
@@ -9,26 +9,25 @@
     height: 60px;
     box-sizing: border-box;
     border-bottom: 2px solid white;
-}
-
-.navbar li {
+  }
+  li {
     float: right;
-}
-
-.navbar li span {
-    margin-bottom: 11px;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    text-decoration: none;
-    font-size: 0.95em;
-    letter-spacing: 0.05em;
-}
-.navbar li:hover {
-  cursor: pointer;
-}
-.navbar li img {
-    display: inline-block;
-    padding: 8px;
-    margin: 0 13px 0 84px;
+    &:hover {
+      cursor: pointer;
+    }
+    span {
+      margin-bottom: 11px;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      text-decoration: none;
+      font-size: $size-normal;
+      letter-spacing: 0.05em;
+    }
+    img {
+      display: inline-block;
+      padding: 8px;
+      margin: 0 13px 0 84px;
+    }
+  }
 }
