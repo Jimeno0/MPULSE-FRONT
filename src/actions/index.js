@@ -52,11 +52,14 @@ export function registerUser(props) {
     });
   };
 }
+
 export function logoutUser(props) {
   const request = axios.delete(`${API_URL}logout`, props);
-  return {
-    type: LOGOUT_USER,
-    payload: request
+  return (dispatch) => {
+    request.then(result => {
+      console.log('loguot:  ',result);
+      dispatch({ type: LOGOUT_USER, payload: result.data });
+    });
   };
 }
 

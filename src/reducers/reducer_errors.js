@@ -7,7 +7,6 @@ export default (state = null, action) => {
     case LOGIN_USER_ERROR:
       return action.payload.data;
     case REGISTER_USER_ERROR:
-    console.log('On register failed: ', action.payload.data);
       return action.payload.data;
     default:
       return state;
