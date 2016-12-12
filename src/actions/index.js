@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/';
 
-export const SEARCH_CONCERTS = 'SEARCH_CONCERTS';
+export const SEARCH_CONCERTS_SUCCESS = 'SEARCH_CONCERTS';
+export const SEARCH_CONCERTS_ERROR = 'SEARCH_CONCERTS_ERROR';
 export const LOGIN_USER = 'LOGIN_USER';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
@@ -16,8 +17,11 @@ export const RECENT_CONCERTS = 'RECENT_CONCERTS';
 export function fetchConcerts(term) {
   return function (dispatch) {
     const url = `${API_URL}concerts/search/${term}`;
-    const request = axios.get(url).then(result => {
-      dispatch({ type: SEARCH_CONCERTS, payload: result.data });
+    const request = axios.get(url)
+    .then(result => {
+      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response })
     });
   };
 }

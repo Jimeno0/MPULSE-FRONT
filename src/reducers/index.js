@@ -7,13 +7,17 @@ import ArtistReducer from './reducer_artist';
 import UserArtistsReducer from './reducer_user_artists';
 import RecentConcertsReducer from './reducer_recent_concerts';
 
+import ErrorsReducer from './reducer_errors';
+
 const rootReducer = combineReducers({
   searchConcerts: SearchReducer,
   form: formReducer,
   user: UserReducer,
   searchedArtist: ArtistReducer,
   userArtists: UserArtistsReducer,
-  recentConcerts: RecentConcertsReducer
+  recentConcerts: RecentConcertsReducer,
+  Errors: ErrorsReducer,
+
 });
 
 export default rootReducer;
