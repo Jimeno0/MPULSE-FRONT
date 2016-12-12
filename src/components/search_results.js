@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SearchResultHeader from './search_results_header';
-import SearchResultList from './search_results_list';
+import ConcertsList from './concerts_list';
 
 
 export default class SearchResult extends Component {
@@ -9,7 +9,7 @@ export default class SearchResult extends Component {
     return (
       <div>
         <SearchResultHeader />
-        <SearchResultList numberOfColumns={3} />
+        <ConcertsList numberOfColumns={3} />
       </div>
     );
   }

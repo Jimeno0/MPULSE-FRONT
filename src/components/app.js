@@ -10,10 +10,10 @@ import Modal from './modal';
 
   componentDidMount() {
     const token = window.localStorage.getItem('token');
-    const params = { token };
-
-    console.log('Before login: ', params);
-    this.props.loginUser(params);
+    if (token) {
+      const params = { token };
+      this.props.loginUser(params);
+    }
   }
 
   render() {

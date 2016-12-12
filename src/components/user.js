@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FilterSidebar from './filter_sidebar';
-import SearchResultList from './search_results_list';
+import ConcertsList from './concerts_list';
 
 export default class Home extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class Home extends Component {
           <FilterSidebar />
         </div>
         <div className="two-thirds column">
-          <SearchResultList numberOfColumns={2} />
+          <ConcertsList numberOfColumns={2} />
         </div>
       </div>
     </div>
