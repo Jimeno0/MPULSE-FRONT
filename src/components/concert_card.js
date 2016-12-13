@@ -14,6 +14,19 @@ class ConcertCard extends Component {
     };
     this.props.addToFav(params);
   }
+  
+  renderFavButton() {
+    const match = this.props.userFavs.find(fav => fav.concert_id === this.props.concert.concert_id);
+    const src = match ? '../../assets/icons/HEARTBEAT.svg' : '../../assets/icons/heartbeat_empty.svg';
+    return (
+      <img
+        onClick={this.addToFav.bind(this)}
+        className="card-like"
+        alt="like"
+        src={src}
+      />
+    );
+  }
   render() {
     const concert = this.props.concert ? this.props.concert : '';
     let day = '';
@@ -28,12 +41,8 @@ class ConcertCard extends Component {
       <div className="card">
         <div className="card-img-container">
           <img className="card-image" src={concert.image} alt={concert.name} />
-          <img
-            onClick={this.addToFav.bind(this)}
-            className="card-like"
-            alt="like"
-            src="../../assets/icons/HEARTBEAT.svg"
-          />
+          {this.renderFavButton()}
+
         </div>
         <div className="card-body">
           <div className="card-date">
@@ -43,7 +52,7 @@ class ConcertCard extends Component {
           <div className="card-content">
             <p>{concert.name.toUpperCase().substring(0, 20)}</p>
             <span>
-              {`${concert.venue}, ${concert.city}, ${concert.country}`.substring(0, 30)}
+              {`${concert.venue}, ${concert.city}, ${concert.country}`}
             </span>
           </div>
 
@@ -53,7 +62,10 @@ class ConcertCard extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({ user: state.user });
+const mapStateToProps = (state) => ({
+   user: state.user,
+   userFavs: state.userFavs
+ });
 
 const mapDispatchToProps = (dispatch) => (bindActionCreators({ addToFav }, dispatch));
 
