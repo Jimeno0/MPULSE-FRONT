@@ -140,7 +140,7 @@ export function addArtistToFav(params) {
   };
 }
 
-// FALTA REMOVER ARTISTAS Y USER favs
+// FALTA REMOVER ARTISTAS
 
 export function setSearchedArtist(term) {
   return {
