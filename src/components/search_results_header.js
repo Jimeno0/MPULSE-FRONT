@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addArtistToFav } from '../actions/index';
+import { addArtistToFav, removeArtistFromFav } from '../actions/index';
 
 
 class SearchResultHeader extends Component {
@@ -17,10 +17,9 @@ class SearchResultHeader extends Component {
   unfollowArtist(event) {
     const params = {
       token: this.props.user.token,
-      artists: { name: event.target.value }
+      name: event.target.value
     };
-    console.log('unfollowing!!');
-    // this.props.addArtistToFav(params);
+    this.props.removeArtistFromFav(params);
   }
 
   renderFollowButton() {
@@ -60,7 +59,7 @@ class SearchResultHeader extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => (bindActionCreators({ addArtistToFav }, dispatch));
+const mapDispatchToProps = (dispatch) => (bindActionCreators({ addArtistToFav, removeArtistFromFav }, dispatch));
 
 const mapStateToProps = (state) => ({
    searchedArtist: state.searchedArtist,

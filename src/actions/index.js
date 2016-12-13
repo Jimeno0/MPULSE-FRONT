@@ -21,11 +21,12 @@ export const GET_USER_ARTISTS_ERROR = 'GET_USER_ARTISTS_ERROR';
 
 export const ADD_CONCERT_TO_FAV_ERROR = 'ADD_CONCERT_TO_FAV_ERROR';
 export const ADD_ARTIST_TO_FAV_ERROR = 'ADD_ARTIST_TO_FAV_ERROR';
-// SIN REDUCER
+
 export const ADD_CONCERT_TO_FAV_SUCCESS = 'ADD_CONCERT_TO_FAV_SUCCESS';
 export const REMOVE_FROM_FAV_SUCCESS = 'REMOVE_FROM_FAV_SUCCESS';
-export const ADD_ARTIST_TO_FAV_SUCCESS = 'ADD_ARTIST_TO_FAV_SUCCESS';
 
+export const ADD_ARTIST_TO_FAV_SUCCESS = 'ADD_ARTIST_TO_FAV_SUCCESS';
+export const REMOVE_ARTIST_FROM_FAV_SUCCESS = 'REMOVE_ARTIST_FROM_FAV_SUCCESS';
 
 export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
 
@@ -140,7 +141,15 @@ export function addArtistToFav(params) {
   };
 }
 
-// FALTA REMOVER ARTISTAS
+export function removeArtistFromFav(params) {
+  const { token, name } = params;
+  const request = axios.delete(`${API_URL}artist/${token}/${name}`);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: REMOVE_ARTIST_FROM_FAV_SUCCESS, payload: result.data });
+    });
+  };
+}
 
 export function setSearchedArtist(term) {
   return {
