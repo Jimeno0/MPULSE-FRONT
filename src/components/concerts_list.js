@@ -12,12 +12,11 @@ class ConcertsList extends Component {
 
     const columnsClass = numberOfColumns === 2 ? 'one-half column' : 'one-third column';
     return concerts.map(concert => (
-      <div key={concert.concert_id} className={columnsClass}>
+      <div key={concert.concert_id} className='card-grid'>
         <ConcertCard concert={concert} />
       </div>
     ));
   }
-  
   render() {
     return (
       <div>

@@ -33,17 +33,6 @@ body{
 .clearfix{
   clear:both;
 }
-.column:first-child, .columns:first-child {
-    margin-left: 1.2%;
-}
-@media (min-width: 550px){
-  .column, .columns {
-      margin: 0 1.2%;
-  }
-}
-
-
-
 
 @import "partials/cards";
 @import "partials/dropdown";
