@@ -1,10 +1,11 @@
-import { GET_USER_ARTISTS } from '../actions/index';
+import { GET_USER_ARTISTS_SUCCESS } from '../actions/index';
 
 
 export default function (state = [], action) {
   switch (action.type) {
-    case GET_USER_ARTISTS:
-    return action.payload.data;
+    case GET_USER_ARTISTS_SUCCESS:
+      return action.payload;
+    default:
+     return state;
   }
-  return state;
 }

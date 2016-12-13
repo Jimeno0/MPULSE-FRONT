@@ -11,9 +11,15 @@ export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const ADD_CONCERT_TO_FAV = 'ADD_CONCERT_TO_FAV';
+
+export const GET_USER_ARTISTS_SUCCESS = 'GET_USER_ARTISTS_SUCCESS';
+export const GET_USER_ARTISTS_ERROR = 'GET_USER_ARTISTS_ERROR';
+
+
 export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
 export const ADD_ARTIST_TO_FAV = 'ADD_ARTIST_TO_FAV';
-export const GET_USER_ARTISTS = 'GET_USER_ARTISTS';
+
+
 export const GET_USER_FAVS = 'GET_USER_FAVS';
 export const RECENT_CONCERTS = 'RECENT_CONCERTS';
 
@@ -76,23 +82,27 @@ export function fetchFavs(token) {
   return (dispatch) => {
     request.then(result => {
       dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
     });
   };
 }
 
 export function fetchUserArtist(token) {
   const request = axios.get(`${API_URL}artist/${token}`);
-  return {
-    type: GET_USER_ARTISTS,
-    payload: request
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: GET_USER_ARTISTS_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: GET_USER_ARTISTS_ERROR, payload: error.response });
+    });
   };
 }
-
-
 
 // Handle favs
 export function addToFav(params) {
   const request = axios.post(`${API_URL}concerts/add`, params);
+
   return {
     type: ADD_CONCERT_TO_FAV,
     payload: request
