@@ -74,6 +74,7 @@ export function fetchLastConcerts() {
   const request = axios.get(`${API_URL}concerts/last`);
   return (dispatch) => {
     request.then(result => {
+      console.log('FETCHING RECENT CONCERTS: ', result.data);
       dispatch({ type: RECENT_CONCERTS_SUCCESS, payload: result.data });
     }).catch(error => {
       dispatch({ type: RECENT_CONCERTS_ERROR, payload: error.response });
