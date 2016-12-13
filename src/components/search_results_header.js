@@ -6,22 +6,34 @@ import { addArtistToFav } from '../actions/index';
 
 class SearchResultHeader extends Component {
 
-  handleFollowArtist(event) {
+  followArtist(event) {
     const params = {
       token: this.props.user.token,
       artists: { name: event.target.value }
     };
     this.props.addArtistToFav(params);
+    console.log('following!!');
   }
+  unfollowArtist(event) {
+    const params = {
+      token: this.props.user.token,
+      artists: { name: event.target.value }
+    };
+    console.log('unfollowing!!');
+    // this.props.addArtistToFav(params);
+  }
+
   renderFollowButton() {
     const alreadyFollowing = this.props.userArtists.find(artist => (
        artist.name === this.props.searchedArtist
      ));
     const btnText = alreadyFollowing ? 'unfollow artist' : 'follow artist';
+    const handler = alreadyFollowing ? this.unfollowArtist.bind(this) : this.followArtist.bind(this);
+
     return (
       <button
         value={this.props.searchedArtist}
-        onClick={this.handleFollowArtist.bind(this)}
+        onClick={handler}
       >{btnText}
       </button>
     );
