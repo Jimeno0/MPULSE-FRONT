@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addToFav } from '../actions/index';
+import { addToFav, removeFromFav } from '../actions/index';
 
 
 const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DIC'];
@@ -14,13 +14,20 @@ class ConcertCard extends Component {
     };
     this.props.addToFav(params);
   }
-  
+  removeFromFav() {
+    const params = {
+      token: this.props.user.token,
+      concertId: this.props.concert.concert_id,
+    };
+    this.props.removeFromFav(params);
+  }
   renderFavButton() {
     const match = this.props.userFavs.find(fav => fav.concert_id === this.props.concert.concert_id);
     const src = match ? '../../assets/icons/HEARTBEAT.svg' : '../../assets/icons/heartbeat_empty.svg';
+    const handler = match ? this.removeFromFav.bind(this) : this.addToFav.bind(this);
     return (
       <img
-        onClick={this.addToFav.bind(this)}
+        onClick={handler}
         className="card-like"
         alt="like"
         src={src}
@@ -67,6 +74,8 @@ const mapStateToProps = (state) => ({
    userFavs: state.userFavs
  });
 
-const mapDispatchToProps = (dispatch) => (bindActionCreators({ addToFav }, dispatch));
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ addToFav, removeFromFav }, dispatch)
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConcertCard);

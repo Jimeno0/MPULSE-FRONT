@@ -23,6 +23,7 @@ export const ADD_CONCERT_TO_FAV_ERROR = 'ADD_CONCERT_TO_FAV_ERROR';
 export const ADD_ARTIST_TO_FAV_ERROR = 'ADD_ARTIST_TO_FAV_ERROR';
 // SIN REDUCER
 export const ADD_CONCERT_TO_FAV_SUCCESS = 'ADD_CONCERT_TO_FAV_SUCCESS';
+export const REMOVE_FROM_FAV_SUCCESS = 'REMOVE_FROM_FAV_SUCCESS';
 export const ADD_ARTIST_TO_FAV_SUCCESS = 'ADD_ARTIST_TO_FAV_SUCCESS';
 
 
@@ -114,6 +115,16 @@ export function addToFav(params) {
       dispatch({ type: ADD_CONCERT_TO_FAV_SUCCESS, payload: result.data });
     }).catch(error => {
       dispatch({ type: ADD_CONCERT_TO_FAV_ERROR, payload: error.response });
+    });
+  };
+}
+
+export function removeFromFav(params) {
+  const { token, concertId } = params;
+  const request = axios.delete(`${API_URL}concerts/${token}/${concertId}`);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: REMOVE_FROM_FAV_SUCCESS, payload: result.data });
     });
   };
 }
