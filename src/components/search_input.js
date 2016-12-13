@@ -12,10 +12,15 @@ class SearchInput extends Component {
   }
   handlerSubmit(event) {
     event.preventDefault();
+    const term = capitalizeFirstLetter(this.state.term);
 
-    this.props.fetchConcerts(this.state.term);
-    this.props.setSearchedArtist(this.state.term);
+    this.props.fetchConcerts(term);
+    this.props.setSearchedArtist(term);
     this.setState({ term: '' });
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
   }
   render() {
     return (

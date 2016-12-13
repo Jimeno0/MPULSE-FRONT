@@ -13,6 +13,19 @@ class SearchResultHeader extends Component {
     };
     this.props.addArtistToFav(params);
   }
+  renderFollowButton() {
+    const alreadyFollowing = this.props.userArtists.find(artist => (
+       artist.name === this.props.searchedArtist
+     ));
+    const btnText = alreadyFollowing ? 'unfollow artist' : 'follow artist';
+    return (
+      <button
+        value={this.props.searchedArtist}
+        onClick={this.handleFollowArtist.bind(this)}
+      >{btnText}
+      </button>
+    );
+  }
   render() {
     const { searchedArtist } = this.props;
       let header = null;
@@ -20,10 +33,7 @@ class SearchResultHeader extends Component {
       header = (
         <div>
           <span>Search for {searchedArtist}</span>
-          <button
-            value={searchedArtist}
-            onClick={this.handleFollowArtist.bind(this)}
-          >Follow artist</button>
+          {this.renderFollowButton()}
         </div>
       );
     } else {
@@ -42,7 +52,8 @@ const mapDispatchToProps = (dispatch) => (bindActionCreators({ addArtistToFav },
 
 const mapStateToProps = (state) => ({
    searchedArtist: state.searchedArtist,
-   user: state.user
+   user: state.user,
+   userArtists: state.userArtists
  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultHeader);
