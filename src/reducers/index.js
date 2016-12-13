@@ -6,6 +6,7 @@ import UserReducer from './reducer_user';
 import ArtistReducer from './reducer_artist';
 import UserArtistsReducer from './reducer_user_artists';
 import RecentConcertsReducer from './reducer_recent_concerts';
+import FavsReducer from './reducer_user_favs';
 
 import ErrorsReducer from './reducer_errors';
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   userArtists: UserArtistsReducer,
   recentConcerts: RecentConcertsReducer,
   Errors: ErrorsReducer,
+  userFavs: FavsReducer
 
 });
 

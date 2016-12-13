@@ -2,16 +2,19 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000/';
 
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
 export const SEARCH_CONCERTS_SUCCESS = 'SEARCH_CONCERTS';
 export const SEARCH_CONCERTS_ERROR = 'SEARCH_CONCERTS_ERROR';
 
 export const RECENT_CONCERTS_SUCCESS = 'RECENT_CONCERTS_SUCCESS';
 export const RECENT_CONCERTS_ERROR = 'RECENT_CONCERTS_ERROR';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
-export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const FAV_CONCERTS_SUCCESS = 'FAV_CONCERTS_SUCCESS';
+export const FAV_CONCERTS_ERROR = 'FAV_CONCERTS_ERROR';
 
 export const GET_USER_ARTISTS_SUCCESS = 'GET_USER_ARTISTS_SUCCESS';
 export const GET_USER_ARTISTS_ERROR = 'GET_USER_ARTISTS_ERROR';
@@ -85,9 +88,9 @@ export function fetchFavs(token) {
   const request = axios.get(`${API_URL}concerts/${token}`);
   return (dispatch) => {
     request.then(result => {
-      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+      dispatch({ type: FAV_CONCERTS_SUCCESS, payload: result.data });
     }).catch(error => {
-      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
+      dispatch({ type: FAV_CONCERTS_ERROR, payload: error.response });
     });
   };
 }

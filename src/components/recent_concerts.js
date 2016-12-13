@@ -4,7 +4,6 @@ import { RecentConcertsList } from './concerts_list';
 
 class RecentConcerts extends Component {
   render() {
-    console.log('RENDERIZA RECENT CONCERTS');
     return (
       <div>
         <div className="row">
