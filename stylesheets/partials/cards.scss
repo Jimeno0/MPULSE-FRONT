@@ -80,13 +80,19 @@
     }
   }
   .card-button {
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
     width: 100%;
     border-radius: 0px;
     border: none;
     border-bottom: 2px solid;
     font-size: $size-h3;
     font-weight: normal;
-    height: 2.2em;
+    padding: 6px 0;
     margin-top: 10px;
     border-color: $primary-color;
     color: $primary-color;

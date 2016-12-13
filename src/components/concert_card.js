@@ -64,7 +64,8 @@ class ConcertCard extends Component {
           </div>
 
         </div>
-        <button className="card-button"> Find tickets</button>
+        <a href={concert.url} className="card-button"> Find tickets</a>
+        {/* <button href={concert.url} className="card-button"> Find tickets</button> */}
       </div>
     );
   }
