@@ -11,17 +11,9 @@ class ConcertsList extends Component {
     }
 
     const columnsClass = numberOfColumns === 2 ? 'one-half column' : 'one-third column';
-    const concertsByRow = partition(concerts, numberOfColumns);
-
-    function partition(array, n) {
-      return array.length ? [array.splice(0, n)].concat(partition(array, n)) : [];
-    }
-    return concertsByRow.map((row, i) => (
-      <div key={`row${i}`} className="row">
-        {row.map((concert, j) => (
-          <div key={`column${j}`} className={columnsClass}>
-            <ConcertCard key={concert.concert_id} concert={concert} />
-          </div>))}
+    return concerts.map(concert => (
+      <div key={concert.concert_id} className={columnsClass}>
+        <ConcertCard concert={concert} />
       </div>
     ));
   }
