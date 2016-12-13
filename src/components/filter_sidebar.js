@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchUserArtist, fetchConcerts, fetchFavs } from '../actions/index';
+import { fetchConcerts, fetchFavs } from '../actions/index';
 
 class FilterSidebar extends Component {
-  componentDidMount() {
-    const token = window.localStorage.getItem('token');
-    this.props.fetchUserArtist(token);
-  }
   handleGetArtist(target) {
     this.props.fetchConcerts(target.currentTarget.innerText);
   }
@@ -42,7 +38,7 @@ class FilterSidebar extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchUserArtist, fetchConcerts, fetchFavs }, dispatch)
+  bindActionCreators({ fetchConcerts, fetchFavs }, dispatch)
 );
 
 const mapStateToProps = (state) => ({
