@@ -15,8 +15,8 @@ import Modal from './modal';
     if (token) {
       const params = { token };
       loginUser(params);
-      fetchFavs(token);
-      fetchUserArtist(token);
+      // fetchFavs(token);
+      // fetchUserArtist(token);
     }
     fetchLastConcerts();
   }
