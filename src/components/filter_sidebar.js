@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchConcerts, setFavsAsSearch } from '../actions/index';
+import { fetchConcerts, setFavsAsSearch, removeArtistFromFav } from '../actions/index';
 
 class FilterSidebar extends Component {
   handleGetArtist(target) {
@@ -12,6 +12,13 @@ class FilterSidebar extends Component {
     this.props.setFavsAsSearch(token);
   }
   handleUnfollowArtist(target) {
+    const token = window.localStorage.getItem('token');
+    const params = {
+      token,
+      name: target.currentTarget.value
+    };
+    this.props.removeArtistFromFav(params);
+
     console.log('UNFOLOWIIIIIIIIN', target.currentTarget.value);
   }
   renderArtists() {
@@ -45,7 +52,7 @@ class FilterSidebar extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchConcerts, setFavsAsSearch }, dispatch)
+  bindActionCreators({ fetchConcerts, setFavsAsSearch, removeArtistFromFav }, dispatch)
 );
 
 const mapStateToProps = (state) => ({
