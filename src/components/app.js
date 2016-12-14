@@ -11,13 +11,7 @@ import Modal from './modal';
   componentDidMount() {
     const { loginUser, fetchLastConcerts, fetchFavs, fetchUserArtist } = this.props;
     const token = window.localStorage.getItem('token');
-
-    if (token) {
-      const params = { token };
-      loginUser(params);
-      // fetchFavs(token);
-      // fetchUserArtist(token);
-    }
+    if (token) { loginUser({ token }); }
     fetchLastConcerts();
   }
 

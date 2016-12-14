@@ -35,24 +35,21 @@ export function loginUser(props) {
   const request = axios.post(`${API_URL}login`, props);
   return (dispatch) => {
     request.then((result) => {
-      console.log('dispacher:', dispatch);
       dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
       }, (error) => {
         dispatch({ type: LOGIN_USER_ERROR, payload: error.response });
       }
     ).then(() => {
-        console.log('CHAINING!');
         const token = window.localStorage.getItem('token');
         if (token) {
           console.log('dispacher BUENO:', dispatch);
           fetchFavs(token, dispatch);
-          fetchUserArtist(token);
+          fetchUserArtist(token, dispatch);
         }
       }
     );
   };
 }
-
 export function registerUser(props) {
   const request = axios.post(`${API_URL}/register`, props);
   return (dispatch) => {
@@ -62,6 +59,23 @@ export function registerUser(props) {
       dispatch({ type: REGISTER_USER_ERROR, payload: error.response });
     });
   };
+}
+
+export function fetchFavs(token, InnerDispatch) {
+  const request = axios.get(`${API_URL}concerts/${token}`);
+  request.then(result => {
+    InnerDispatch({ type: FAV_CONCERTS_SUCCESS, payload: result.data });
+  }).catch(error => {
+    InnerDispatch({ type: FAV_CONCERTS_ERROR, payload: error.response });
+  });
+}
+export function fetchUserArtist(token, InnerDispatch) {
+  const request = axios.get(`${API_URL}artist/${token}`);
+  request.then(result => {
+    InnerDispatch({ type: GET_USER_ARTISTS_SUCCESS, payload: result.data });
+  }).catch(error => {
+    InnerDispatch({ type: GET_USER_ARTISTS_ERROR, payload: error.response });
+  });
 }
 
 export function logoutUser(props) {
@@ -93,31 +107,6 @@ export function fetchLastConcerts() {
       dispatch({ type: RECENT_CONCERTS_SUCCESS, payload: result.data });
     }).catch(error => {
       dispatch({ type: RECENT_CONCERTS_ERROR, payload: error.response });
-    });
-  };
-}
-
-export function fetchFavs(token, InnerDispatch) {
-  console.log('FETCHING FAVS: ', token);
-  const request = axios.get(`${API_URL}concerts/${token}`);
-  console.log('dispacher:', InnerDispatch);
-  // return (InnerDispatch) => {
-    request.then(result => {
-      console.log('LANZA FETCH FAVS', result);
-      InnerDispatch({ type: FAV_CONCERTS_SUCCESS, payload: result.data });
-    }).catch(error => {
-      InnerDispatch({ type: FAV_CONCERTS_ERROR, payload: error.response });
-    });
-  // };
-}
-
-export function fetchUserArtist(token) {
-  const request = axios.get(`${API_URL}artist/${token}`);
-  return (dispatch) => {
-    request.then(result => {
-      dispatch({ type: GET_USER_ARTISTS_SUCCESS, payload: result.data });
-    }).catch(error => {
-      dispatch({ type: GET_USER_ARTISTS_ERROR, payload: error.response });
     });
   };
 }
