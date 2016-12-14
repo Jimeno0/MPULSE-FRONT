@@ -70,7 +70,7 @@ class ConcertCard extends Component {
           <div className="card-content">
             <p>{concert.name.toUpperCase().substring(0, 20)}</p>
             <span>
-              {`${concert.venue}, ${concert.city}, ${concert.country}`}
+              {`${concert.venue}, ${concert.city}, ${concert.country}`.substring(0, 30)}
             </span>
           </div>
 
