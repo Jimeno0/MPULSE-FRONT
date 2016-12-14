@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchConcerts, fetchFavs } from '../actions/index';
+import { fetchConcerts, setFavsAsSearch } from '../actions/index';
 
 class FilterSidebar extends Component {
   handleGetArtist(target) {
@@ -9,7 +9,7 @@ class FilterSidebar extends Component {
   }
   handleGetFavConcerts() {
     const token = window.localStorage.getItem('token');
-    this.props.fetchFavs(token);
+    this.props.setFavsAsSearch(token);
   }
   renderArtists() {
     const { userArtists } = this.props;
@@ -38,7 +38,7 @@ class FilterSidebar extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchConcerts, fetchFavs }, dispatch)
+  bindActionCreators({ fetchConcerts, setFavsAsSearch }, dispatch)
 );
 
 const mapStateToProps = (state) => ({

@@ -100,6 +100,17 @@ export function fetchConcerts(term) {
   };
 }
 
+export function setFavsAsSearch(token) {
+  const request = axios.get(`${API_URL}concerts/${token}`);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: SEARCH_CONCERTS_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: SEARCH_CONCERTS_ERROR, payload: error.response });
+    });
+  };
+}
+
 export function fetchLastConcerts() {
   const request = axios.get(`${API_URL}concerts/last`);
   return (dispatch) => {
