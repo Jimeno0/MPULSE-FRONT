@@ -11,14 +11,21 @@ class FilterSidebar extends Component {
     const token = window.localStorage.getItem('token');
     this.props.setFavsAsSearch(token);
   }
+  handleUnfollowArtist(target) {
+    console.log('UNFOLOWIIIIIIIIN', target.currentTarget.value);
+  }
   renderArtists() {
     const { userArtists } = this.props;
     if (userArtists && userArtists[0]) {
       return userArtists.map((artist) => (
-        <li
-          key={artist.name}
-          onClick={this.handleGetArtist.bind(this)}
-        >{artist.name}</li>));
+        <li key={artist.name}>
+          <span onClick={this.handleGetArtist.bind(this)}>
+            {artist.name}
+          </span>
+          <button value={artist.name} onClick={this.handleUnfollowArtist.bind(this)}>
+            Delete
+          </button>
+        </li>));
     }
       return (<li>No favourites artist yet</li>);
   }
