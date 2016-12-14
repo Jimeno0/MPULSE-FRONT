@@ -29,7 +29,7 @@ class NavBar extends Component {
           <span className="dropbtn">{this.props.user.name}</span>
           <div className="dropdown-content">
             <Link to={`/${user.name}`}>Profile</Link>
-            <a>Settings</a>
+            <a onClick={this.toogleModal.bind(this)}>Settings</a>
             <a onClick={this.handleLogout.bind(this)}>Log out</a>
           </div>
         </li>
