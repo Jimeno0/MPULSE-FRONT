@@ -8,7 +8,7 @@ class Modal extends Component{
     this.closeModal();
   }
   closeModal(){
-    document.getElementsByClassName("modal")[0].style.setProperty('display','none');
+    document.getElementsByClassName('modal')[0].style.setProperty('display', 'none');
   }
   render(){
     return(
@@ -25,12 +25,7 @@ class Modal extends Component{
               </div>
             </div>
             <div className="row">
-              <div className="one-half column">
-                <LoginForm />
-              </div>
-              <div className="one-half column">
-                <RegisterForm />
-              </div>
+              {this.props.children}
             </div>
           </div>
         </div>
