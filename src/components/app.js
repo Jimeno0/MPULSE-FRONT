@@ -5,6 +5,7 @@ import { loginUser, fetchLastConcerts, fetchFavs, fetchUserArtist } from '../act
 
 import Header from './header';
 import Modal from './modal';
+import ErrorsToast from './errors_toast';
 
  class App extends Component {
 
@@ -18,6 +19,7 @@ import Modal from './modal';
   render() {
     return (
       <div>
+        <ErrorsToast />
         <Modal />
         <Header />
         {this.props.children}
