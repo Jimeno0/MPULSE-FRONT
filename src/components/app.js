@@ -13,7 +13,6 @@ import Modal from './modal';
     const token = window.localStorage.getItem('token');
 
     if (token) {
-      console.log('ENTRA A PESAR DE TOKEN VACÍO');
       const params = { token };
       loginUser(params);
       fetchFavs(token);

@@ -34,11 +34,19 @@ export const SET_SEARCHED_ARTIST = 'SET_SEARCHED_ARTIST';
 export function loginUser(props) {
   const request = axios.post(`${API_URL}login`, props);
   return (dispatch) => {
-    request.then(result => {
+    request.then((result) => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
-    }).catch(error => {
+    }, (error) => {
       dispatch({ type: LOGIN_USER_ERROR, payload: error.response });
-    });
+    }
+).then(() => {
+    console.log('CHAINING!');
+  }
+);
+
+    // .catch(error => {
+    //   dispatch({ type: LOGIN_USER_ERROR, payload: error.response });
+    // });
   };
 }
 
