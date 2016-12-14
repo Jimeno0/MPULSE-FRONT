@@ -6,7 +6,8 @@ export default function (state = {}, action) {
       window.localStorage.setItem('token', action.payload.token);
       return action.payload;
     case LOGOUT_USER :
-      return action.payload;
+      window.localStorage.removeItem('token');
+      return {};
     default:
       return state;
   }
