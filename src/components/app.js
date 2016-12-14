@@ -5,6 +5,7 @@ import { loginUser, fetchLastConcerts, fetchFavs, fetchUserArtist } from '../act
 
 import LoginForm from './login_form';
 import RegisterForm from './register_form';
+import UpdateForm from './update_form';
 import Header from './header';
 import Modal from './modal';
 import ErrorsToast from './errors_toast';
@@ -17,18 +18,28 @@ import ErrorsToast from './errors_toast';
     if (token) { loginUser({ token }); }
     fetchLastConcerts();
   }
+  modalContent() {
+    if (this.props.user.token) {
+      return (<UpdateForm />);
+    }
+    return (
+      <div>
+        <div className="one-half column">
+          <LoginForm />
+        </div>
+        <div className="one-half column">
+          <RegisterForm />
+        </div>
+      </div>
+    );
+  }
 
   render() {
     return (
       <div>
         <ErrorsToast />
         <Modal>
-          <div className="one-half column">
-            <LoginForm />
-          </div>
-          <div className="one-half column">
-            <RegisterForm />
-          </div>
+          {this.modalContent()}
         </Modal>
         <Header />
         {this.props.children}
@@ -36,9 +47,12 @@ import ErrorsToast from './errors_toast';
     );
   }
 }
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({ loginUser, fetchLastConcerts, fetchFavs, fetchUserArtist }, dispatch)
 );
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

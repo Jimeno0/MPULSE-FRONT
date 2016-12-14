@@ -61,6 +61,17 @@ export function registerUser(props) {
   };
 }
 
+export function updateUser(props) {
+  const request = axios.patch(`${API_URL}users`, props);
+  return (dispatch) => {
+    request.then(result => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
+    }).catch(error => {
+      dispatch({ type: REGISTER_USER_ERROR, payload: error.response });
+    });
+  };
+}
+
 export function fetchFavs(token, InnerDispatch) {
   const request = axios.get(`${API_URL}concerts/${token}`);
   request.then(result => {
