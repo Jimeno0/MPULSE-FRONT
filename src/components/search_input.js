@@ -26,8 +26,8 @@ class SearchInput extends Component {
     return (
       <div className="search-bar">
         <div className="header-slogan">
-          <p className="header-title">Lorem ipsum dolor sit amet</p>
-          <p className="header-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+          <p className="header-title">All your artists in just one place</p>
+          <p className="header-subtitle">Track your favourite artists and live the whole music experience</p>
         </div>
         <form onSubmit={this.handlerSubmit.bind(this)}>
           <input
