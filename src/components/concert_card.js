@@ -21,10 +21,21 @@ class ConcertCard extends Component {
     };
     this.props.removeFromFav(params);
   }
+  askForRegister() {
+    document.getElementsByClassName('modal')[0].style.setProperty('display', 'block');
+  }
   renderFavButton() {
     const match = this.props.userFavs.find(fav => fav.concert_id === this.props.concert.concert_id);
     const src = match ? '../../assets/icons/HEARTBEAT.svg' : '../../assets/icons/heartbeat_empty.svg';
-    const handler = match ? this.removeFromFav.bind(this) : this.addToFav.bind(this);
+    const { token } = this.props.user;
+    let handler;
+    if (token && match) {
+      handler = this.removeFromFav.bind(this);
+    } else if (token && !match) {
+      handler = this.addToFav.bind(this);
+    } else {
+      handler = this.askForRegister;
+    }
     return (
       <img
         onClick={handler}
