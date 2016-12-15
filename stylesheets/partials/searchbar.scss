@@ -28,7 +28,7 @@
   .header-slogan{
     padding: 0px;
     padding-bottom: 140px;
-    
+
     p:first-child{
       font-size: $size-h1;
     }
@@ -37,3 +37,14 @@
     }
   }
 }
+@media (max-width: 600px) {
+  .search-bar {
+    .header-slogan{
+      padding-bottom: 60px;
+      p:first-child{
+        font-size: 3rem;
+      }
+    }
+  }
+}
+
