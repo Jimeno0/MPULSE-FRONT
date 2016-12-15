@@ -7,7 +7,7 @@ class RecentConcerts extends Component {
     return (
       <div>
         <div className="row search-result-header">
-          <p>Recent Concerts</p>
+          <span>Recent Concerts</span>
         </div>
         <div className="row">
           <RecentConcertsList numberOfColumns={3} />
