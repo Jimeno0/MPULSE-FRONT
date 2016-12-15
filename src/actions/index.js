@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/';
+// const API_URL = 'http://localhost:3000/';
+const API_URL = 'https://mpulseapi.herokuapp.com/';
 
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
@@ -51,7 +52,7 @@ export function loginUser(props) {
   };
 }
 export function registerUser(props) {
-  const request = axios.post(`${API_URL}/register`, props);
+  const request = axios.post(`${API_URL}register`, props);
   return (dispatch) => {
     request.then(result => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: result.data });
