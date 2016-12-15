@@ -4,13 +4,8 @@ import ConcertCard from './concert_card';
 
 class ConcertsList extends Component {
   renderList() {
-    const { numberOfColumns, concerts } = this.props;
+    const { concerts } = this.props;
 
-    if (concerts.length === 0) {
-      return (<span>No concerts for this artist yet...</span>);
-    }
-
-    const columnsClass = numberOfColumns === 2 ? 'one-half column' : 'one-third column';
     return concerts.map(concert => (
       <div key={concert.concert_id} className='card-grid'>
         <ConcertCard concert={concert} />

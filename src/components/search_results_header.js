@@ -37,32 +37,45 @@ class SearchResultHeader extends Component {
       </button>
     );
   }
-  render() {
-    const { searchedArtist } = this.props;
-      let header = null;
-    if (searchedArtist) {
-      header = (
-        <div>
-          <span>Search for {searchedArtist}</span>
-          {this.renderFollowButton()}
-        </div>
-      );
-    } else {
-      header = (<span>Search Results</span>);
-    }
 
+  render() {
+    const { searchedArtist, searchConcerts } = this.props;
+      let header = null;
+
+      if (searchConcerts.length === 0 && !searchedArtist) {
+        console.log('entra 1 vacio');
+        header = '';
+      } else if (searchConcerts.length === 0 && searchedArtist) {
+        console.log('entra 2');
+        header = (
+          <div className="row search-result-header">
+            <span>No concerts for {searchedArtist}</span>
+          </div>
+        );
+      } else if (searchConcerts && searchedArtist) {
+        console.log('entra 3');
+        header = (
+            <div className="row search-result-header">
+              <span>Search for {searchedArtist}</span>
+              {this.renderFollowButton()}
+            </div>
+          );
+      }
     return (
-      <div className="row search-result-header">
+      <div >
         { header }
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => (bindActionCreators({ addArtistToFav, removeArtistFromFav }, dispatch));
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({ addArtistToFav, removeArtistFromFav }, dispatch)
+);
 
 const mapStateToProps = (state) => ({
    searchedArtist: state.searchedArtist,
+   searchConcerts: state.searchConcerts,
    user: state.user,
    userArtists: state.userArtists
  });

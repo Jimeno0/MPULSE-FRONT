@@ -6,7 +6,7 @@ class RecentConcerts extends Component {
   render() {
     return (
       <div>
-        <div className="row">
+        <div className="row search-result-header">
           <p>Recent Concerts</p>
         </div>
         <div className="row">
