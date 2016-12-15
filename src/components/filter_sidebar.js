@@ -29,8 +29,11 @@ class FilterSidebar extends Component {
           <span onClick={this.handleGetArtist.bind(this)}>
             {artist.name}
           </span>
-          <button value={artist.name} onClick={this.handleUnfollowArtist.bind(this)}>
-            Delete
+          <button
+            className="remove-artist"
+            value={artist.name}
+            onClick={this.handleUnfollowArtist.bind(this)}>
+            <img src="../../assets/icons/delete.svg" alt="delete" />
           </button>
         </li>));
     }
@@ -38,11 +41,11 @@ class FilterSidebar extends Component {
   }
   render() {
     return (
-      <ul>
+      <ul className="sidebar_filter">
         <li
           onClick={this.handleGetFavConcerts.bind(this)}
         >Favourite concerts</li>
-        <li>Artist</li>
+        <li className="user-artist-header">Artist</li>
         <ul>
           {this.renderArtists()}
         </ul>
