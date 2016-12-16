@@ -65,7 +65,6 @@ export function registerUser(props) {
 export function updateUser(props) {
   const token = window.localStorage.getItem('token');
   props.token = token;
-  console.log(props);
   const request = axios.patch(`${API_URL}users`, props);
   return (dispatch) => {
     request.then(result => {
