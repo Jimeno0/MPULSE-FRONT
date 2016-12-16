@@ -9,26 +9,24 @@ class LoginForm extends Component {
     this.closeModal();
   }
   closeModal() {
-    document.getElementsByClassName("modal")[0].style.setProperty('display','none');
+    document.getElementsByClassName('modal')[0].style.setProperty('display', 'none');
   }
 
-  render(){
+  render() {
     const handleSubmit = this.props.handleSubmit;
     const email = this.props.fields.email;
     const password = this.props.fields.password;
 
-    return(
-
+    return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         {email.touched ? email.error : ''}
-        <input className="u-full-width" type="email" placeholder="Email" {...email}  />
+        <input className="u-full-width" type="email" placeholder="Email" {...email} />
         {password.touched ? password.error : ''}
         <input className="u-full-width" type="password" placeholder="Password" {...password} />
         <button className="u-full-width modal-forgot-password" type="submit">Forgot password?</button>
         <button className="u-full-width modal-submit" type="submit">LOG IN</button>
       </form>
-
-    )
+    );
   }
 }
 
@@ -46,6 +44,6 @@ function validate(value) {
 
 export default reduxForm({
   form: 'LoginForm',
-  fields:['email','password'],
+  fields: ['email', 'password'],
   validate
-},null, { loginUser })(LoginForm);
+}, null, { loginUser })(LoginForm);

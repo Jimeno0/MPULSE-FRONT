@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { RecentConcertsList } from './concerts_list';
 
 class RecentConcerts extends Component {

@@ -27,10 +27,10 @@ class RegisterForm extends Component {
 
         {email.touched ? email.error : ''}
         <input className="u-full-width" type="email" placeholder="Email" {...email} />
+
         {password.touched ? password.error : ''}
-
         <input className="u-full-width" type="password" placeholder="Password" {...password} />
-
+        
         <button className="u-full-width modal-submit" type="submit">SIGN UP</button>
       </form>
 

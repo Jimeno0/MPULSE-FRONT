@@ -19,11 +19,6 @@ class Header extends Component {
             <source src="../../assets/video/mpulse_header.mp4" type="video/mp4" />
           </video>
         </div>
-        {/* <img
-          className="header-bg"
-          src="../../assets/images/screenshot.jpg"
-          alt="header-img"
-        /> */}
         <SearchInput />
       </div>
     );
