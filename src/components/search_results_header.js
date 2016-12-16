@@ -43,17 +43,14 @@ class SearchResultHeader extends Component {
       let header = null;
 
       if (searchConcerts.length === 0 && !searchedArtist) {
-        console.log('entra 1 vacio');
         header = '';
       } else if (searchConcerts.length === 0 && searchedArtist) {
-        console.log('entra 2');
         header = (
           <div className="row search-result-header">
             <span>No concerts for {searchedArtist}</span>
           </div>
         );
       } else if (searchConcerts && searchedArtist) {
-        console.log('entra 3');
         header = (
             <div className="row search-result-header">
               <span>Search for {searchedArtist}</span>
