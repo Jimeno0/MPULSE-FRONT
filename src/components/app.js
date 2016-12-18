@@ -9,6 +9,8 @@ import UpdateForm from './update_form';
 import Header from './header';
 import Modal from './modal';
 import ErrorsToast from './errors_toast';
+import Footer from './footer';
+
 
  class App extends Component {
 
@@ -43,6 +45,7 @@ import ErrorsToast from './errors_toast';
         </Modal>
         <Header />
         {this.props.children}
+        <Footer />
       </div>
     );
   }
