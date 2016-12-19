@@ -5,3 +5,9 @@
   width: 100%;
   overflow: hidden;
 }
+
+@media (min-width:1430px) {
+  video {
+    width: 100%;
+  }
+}
